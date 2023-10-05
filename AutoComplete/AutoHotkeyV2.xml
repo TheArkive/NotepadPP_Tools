@@ -1,0 +1,4815 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<NotepadPlus>
+	<AutoComplete>
+		<Environment ignoreCase="yes" startFunc="(" stopFunc=")" paramSeparator="," terminal="" additionalWordChar="##" />
+        
+        <!-- =================================================== -->
+        <!-- === #Directives =================================== -->
+        <!-- =================================================== -->
+        
+        <KeyWord name="#ClipboardTimeout" func="yes">
+            <Overload retVal="" descr="
+Default = 1000 ms
+-1 = keep trying
+ 0 = try only once">
+                <Param name="milliseconds" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#DllLoad" func="yes">
+            <Overload retVal="" descr="
+*i = ignore failure to load (optional)">
+                <Param name="[[*i] FileOrDirName]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#ErrorStdOut" func="yes">
+            <Overload retVal="" descr="
+Default = CP0">
+                <Param name="[Encoding]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#HotIf" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Expression]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#HotIfTimeout" func="yes">
+            <Overload retVal="" descr="
+Default = 1000 ms">
+                <Param name="milliseconds" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#Hotstring" func="yes">
+            <Overload retVal="" descr="
+Literal unquoted 'NoMouse'.  Prevents mouse clicks from resetting the hotstring recognizer.">
+                <Param name="NoMouse" />
+            </Overload>
+            <Overload retVal="" descr="
+Default = -()[]{}':;&#x22;/\,.?!`n`s`t
+Literal unquoted 'EndChars' followed by a single space and then the new ending characters.">
+                <Param name="EndChars ...chars..." />
+            </Overload>
+            <Overload retVal="" descr="
+Specify new Hotstring options.">
+                <Param name="NewOptions" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#Include" func="yes">
+            <Overload retVal="" descr="
+*i = ignore failure to load (optional)">
+                <Param name="[*i] FileOrDirName" />
+            </Overload> 
+            <Overload retVal="" descr="
+*i = ignore failure to load (optional)">
+                <Param name="[*i] &lt;Lib&gt;" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#IncludeAgain" func="yes">
+            <Overload retVal="" descr="
+*i = ignore failure to load (optional)">
+                <Param name="[*i] FileOrDirName" />
+            </Overload> 
+            <Overload retVal="" descr="
+*i = ignore failure to load (optional)">
+                <Param name="[*i] &lt;Lib&gt;" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#InputLevel" func="yes">
+            <Overload retVal="" descr="
+Default = 0
+Controls which artificial keyboard and mouse events are ignored by hotkeys and hotstrings.">
+                <Param name="[Level]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#MaxThreads" func="yes">
+            <Overload retVal="" descr="
+Default = 10">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#MaxThreadsBuffer" func="yes">
+            <Overload retVal="" descr="
+Default = False
+Causes some or all hotkeys to buffer rather than ignore keypresses when their #MaxThreadsPerHotkey limit has been reached.">
+                <Param name="True|False" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#MaxThreadsPerHotkey" func="yes">
+            <Overload retVal="" descr="
+Default = 1
+Sets the maximum number of simultaneous threads per hotkey or hotstring.">
+                <Param name="Integer" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#NoTrayIcon" func="yes">
+            <Overload retVal="" descr="
+The built-in variable A_IconHidden can also be used to toggle the tray icon."/>
+        </KeyWord>
+        <KeyWord name="#Requires" func="yes">
+            <Overload retVal="" descr="
+Examples:
+#Requires AutoHotkey v1.1
+#Requires AutoHotkey &gt;=v2.0.1
+
+* prepending 'v' is optional">
+                <Param name="Requirement" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#SingleInstance" func="yes">
+            <Overload retVal="" descr="
+Default = Prompt
+Literal unquoted string.">
+                <Param name="Force|Ignore|Prompt|Off" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#SuspendExempt" func="yes">
+            <Overload retVal="" descr="
+Default = True
+Exempts hotkeys and hotstrings that follow from suspension.">
+                <Param name="[True|False]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#UseHook" func="yes">
+            <Overload retVal="" descr="
+Default = True&#x0a;Forces the use of the hook to implement all or some keyboard hotkeys.">
+                <Param name="[True|False]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#Warn" func="yes">
+            <Overload retVal="" descr="
+WarnType = VarUnset, LocalSameAsGlobal, Unreachable, All&#x0a;WarnMode = MsgBox, StdOut, OutputDebug, Off">
+                <Param name="[WarnType, WarnMode]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="#WinActivateForce" func="yes">
+            <Overload retVal="" descr="
+Skips the gentle method of activating a window and goes straight to the forceful method.">
+                <Param name="" />
+            </Overload>
+        </KeyWord>
+        
+        <!-- =================================================== -->
+        <!-- === Functions ===================================== -->
+        <!-- =================================================== -->
+        
+        <KeyWord name="ACos" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number"/>
+            </Overload>
+            <Overload retVal="" descr="
+Number must be between -1 and 1.
+
+Returns radians.">
+                <Param name="Number"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ASin" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number"/>
+            </Overload>
+            <Overload retVal="" descr="
+Number must be between -1 and 1.
+
+Returns radians.">
+                <Param name="Number"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ATan" func="yes">
+            <Overload retVal="" descr=""><Param name="Number"/></Overload>
+            <Overload retVal="" descr="
+Returns radians.">
+                <Param name="Number"/>
+            </Overload>
+        </KeyWord>
+        
+        <!-- === Built-in Variables ===================== -->
+        <KeyWord name="A_AhkPath" />
+        <KeyWord name="A_AhkVersion" />
+        <KeyWord name="A_AllowMainWindow" />
+        <KeyWord name="A_AllowMainWindow" />
+        <KeyWord name="A_AppData" />
+        <KeyWord name="A_AppDataCommon" />
+        <KeyWord name="A_Args" />
+        <KeyWord name="A_Clipboard" />
+        <KeyWord name="A_ComSpec" />
+        <KeyWord name="A_ComputerName" />
+        <KeyWord name="A_ControlDelay" />
+        <KeyWord name="A_CoordModeCaret" />
+        <KeyWord name="A_CoordModeMenu" />
+        <KeyWord name="A_CoordModeMouse" />
+        <KeyWord name="A_CoordModePixel" />
+        <KeyWord name="A_CoordModeToolTip" />
+        <KeyWord name="A_Cursor" />
+        <KeyWord name="A_DD" />
+        <KeyWord name="A_DDD" />
+        <KeyWord name="A_DDDD" />
+        <KeyWord name="A_DefaultMouseSpeed" />
+        <KeyWord name="A_Desktop" />
+        <KeyWord name="A_DesktopCommon" />
+        <KeyWord name="A_DetectHiddenText" />
+        <KeyWord name="A_DetectHiddenWindows" />
+        <KeyWord name="A_EndChar" />
+        <KeyWord name="A_EndChar" />
+        <KeyWord name="A_EventInfo" />
+        <KeyWord name="A_FileEncoding" />
+        <KeyWord name="A_HotkeyInterval" />
+        <KeyWord name="A_HotkeyModifierTimeout" />
+        <KeyWord name="A_Hour" />
+        <KeyWord name="A_IconFile" />
+        <KeyWord name="A_IconHidden" />
+        <KeyWord name="A_IconNumber" />
+        <KeyWord name="A_IconTip" />
+        <KeyWord name="A_Index" />
+        <KeyWord name="A_InitialWorkingDir" />
+        <KeyWord name="A_Is64bitOS" />
+        <KeyWord name="A_IsAdmin" />
+        <KeyWord name="A_IsCompiled" />
+        <KeyWord name="A_IsCritical" />
+        <KeyWord name="A_IsPaused" />
+        <KeyWord name="A_IsSuspended" />
+        <KeyWord name="A_KeyDelay" />
+        <KeyWord name="A_KeyDelayPlay" />
+        <KeyWord name="A_KeyDuration" />
+        <KeyWord name="A_KeyDurationPlay" />
+        <KeyWord name="A_Language" />
+        <KeyWord name="A_LastError" />
+        <KeyWord name="A_LineFile" />
+        <KeyWord name="A_LineNumber" />
+        <KeyWord name="A_ListLines" />
+        <KeyWord name="A_LoopField" />
+        <KeyWord name="A_LoopFileAttrib" />
+        <KeyWord name="A_LoopFileDir" />
+        <KeyWord name="A_LoopFileExt" />
+        <KeyWord name="A_LoopFileFullPath" />
+        <KeyWord name="A_LoopFileName" />
+        <KeyWord name="A_LoopFilePath" />
+        <KeyWord name="A_LoopFileShortName" />
+        <KeyWord name="A_LoopFileShortPath" />
+        <KeyWord name="A_LoopFileSize" />
+        <KeyWord name="A_LoopFileSizeKB" />
+        <KeyWord name="A_LoopFileSizeMB" />
+        <KeyWord name="A_LoopFileTimeAccessed" />
+        <KeyWord name="A_LoopFileTimeCreated" />
+        <KeyWord name="A_LoopFileTimeModified" />
+        <KeyWord name="A_LoopReadLine" />
+        <KeyWord name="A_LoopRegKey" />
+        <KeyWord name="A_LoopRegName" />
+        <KeyWord name="A_LoopRegTimeModified" />
+        <KeyWord name="A_LoopRegType" />
+        <KeyWord name="A_MM" />
+        <KeyWord name="A_MMM" />
+        <KeyWord name="A_MMMM " />
+        <KeyWord name="A_MSec" />
+        <KeyWord name="A_MaxHotkeysPerInterval" />
+        <KeyWord name="A_Min " />
+        <KeyWord name="A_MouseDelay" />
+        <KeyWord name="A_MouseDelayPlay" />
+        <KeyWord name="A_MyDocuments" />
+        <KeyWord name="A_Now" />
+        <KeyWord name="A_NowUTC" />
+        <KeyWord name="A_OSVersion" />
+        <KeyWord name="A_PriorHotkey" />
+        <KeyWord name="A_PriorKey" />
+        <KeyWord name="A_ProgramFiles" />
+        <KeyWord name="A_Programs" />
+        <KeyWord name="A_ProgramsCommon" />
+        <KeyWord name="A_PtrSize" />
+        <KeyWord name="A_RegView" />
+        <KeyWord name="A_ScreenDPI" />
+        <KeyWord name="A_ScreenHeight" />
+        <KeyWord name="A_ScreenWidth" />
+        <KeyWord name="A_ScriptDir" />
+        <KeyWord name="A_ScriptFullPath" />
+        <KeyWord name="A_ScriptHwnd" />
+        <KeyWord name="A_ScriptName" />
+        <KeyWord name="A_Sec" />
+        <KeyWord name="A_SendLevel" />
+        <KeyWord name="A_SendMode" />
+        <KeyWord name="A_Space" />
+        <KeyWord name="A_StartMenu" />
+        <KeyWord name="A_StartMenuCommon" />
+        <KeyWord name="A_Startup" />
+        <KeyWord name="A_StartupCommon" />
+        <KeyWord name="A_StoreCapsLockMode" />
+        <KeyWord name="A_Tab" />
+        <KeyWord name="A_Temp" />
+        <KeyWord name="A_ThisFunc" />
+        <KeyWord name="A_ThisHotkey" />
+        <KeyWord name="A_TickCount" />
+        <KeyWord name="A_TimeIdle" />
+        <KeyWord name="A_TimeIdleKeyboard" />
+        <KeyWord name="A_TimeIdleMouse" />
+        <KeyWord name="A_TimeIdlePhysical" />
+        <KeyWord name="A_TimeSincePriorHotkey" />
+        <KeyWord name="A_TimeSinceThisHotkey" />
+        <KeyWord name="A_TitleMatchMode" />
+        <KeyWord name="A_TitleMatchModeSpeed" />
+        <KeyWord name="A_TrayMenu" />
+        <KeyWord name="A_UserName" />
+        <KeyWord name="A_WDay" />
+        <KeyWord name="A_WinDelay" />
+        <KeyWord name="A_WinDir" />
+        <KeyWord name="A_WorkingDir" />
+        <KeyWord name="A_YDay " />
+        <KeyWord name="A_YWeek" />
+        <KeyWord name="A_YYYY" />
+        
+        <KeyWord name="Abs" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Array" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Value1, Value2, ...]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="BlockInput" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="True|False" />
+            </Overload>
+            <Overload retVal="" descr="
+All options are literal unquoted strings.">
+                <Param name="Send|Mouse|SendAndMouse|Default" />
+            </Overload>
+            <Overload retVal="" descr="
+All options are literal unquoted strings.">
+                <Param name="MouseMove|MouseMoveOff" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Break" func="yes">
+            <Overload retVal="" descr="
+Break [LoopLabel_OrLevel]
+
+Example:
+
+outer:
+Loop 3
+{
+    x := A_Index
+    Loop 3
+    {
+        if (x*A_Index = 6)
+            break outer  ; Equivalent to break 2 or goto break_outer.
+        MsgBox x ',' A_Index
+    }
+}
+break_outer: ; For goto."/>
+        </KeyWord>
+        <KeyWord name="Buffer" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Size" />
+                <Param name="[FillByte]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Returns: obj{Ptr, Size}">
+                <Param name="Size [, FillByte]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CallbackCreate" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Function"/>
+                <Param name="[Options]"/>
+                <Param name="[ParamCount]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+ Fast (F) = avoids starting a new thread on func callout
+CDecl (C) = make addresses conform to 'C' calling convention
+        &amp; = Causes the addresses of param list to be passed instead of params">
+                <Param name="Function [, Options, ParamCount]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CallbackFree" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Address" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CaretGetPos" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[&amp;OutputX]" />
+                <Param name="[&amp;OutputY]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Catch" func="yes">
+            <Overload retVal="" descr="
+    Try Statement(s)
+    Catch [ErrorClass] [as OutputVar]
+    {
+        Statements
+    }
+
+Error Classes:
+MemoryError  = Memory allocation failed.
+OSError      = Win32 func call failed.
+TargetError  = Gui target could not be found (window or control).
+TimeoutError = SendMessage timed out.
+TypeError    = Unexpected type (subjective, use as desired).
+UnsetError   = Var does not exist, or is unset / no value.
+  - MemberError
+    - PropertyError
+    - MethodError
+  - UnsetItemError
+ValueError   = Unexpected type (subjective, use as desired).
+IndexError   = Requested __Index[] was invalid or out of range.
+ZeroDivisionError" />
+        </KeyWord>
+        <KeyWord name="Ceil" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns an integer after rounding up.
+
+Example:
+
+MsgBox Ceil(1.2)  ; Returns 2
+MsgBox Ceil(-1.2) ; Returns -1">
+                <Param name="Number" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Chr" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Click" func="yes">
+            <Overload retVal="" descr="
+[Options] are a combination of the following:
+
+Specify the X/Y coords where the click should happen.
+    Click '100 200'
+
+Specify which button: Left|L|Right|R|Middle|M|X1|X2
+    Click 'Left'            ('Left' can be omitted in most cases)
+
+Specify click count:
+    Click '2'               (2 left clicks - doubleclick)
+    Click '100 200 2'       (2 left clicks at specified coords)
+    Click '100 200 Right 2' (2 right clicks ar specified coords)
+
+Up or Down:
+    Click 'Down'            (clicks left button and holds it)
+    Click 'Right Down'      (clicks right button and holds it)
+
+Relative
+    Click '100 200 Right Rel (clicks right button at specified coords,
+                              but relative to current mouse pos)">
+                <Param name="[Options]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ClipWait" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Seconds]" />
+                <Param name="[WaitFor := 0]" />
+            </Overload>
+            <Overload retVal="" descr="
+Seconds = Integer or decimal
+WaitFor:
+0 = wait for text or files
+1 = any data
+
+Return:
+0 = timed out
+1 = didn't time out">
+                <Param name="[Seconds, WaitFor := 0]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ClipboardAll" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Data]" />
+                <Param name="[Size]" />
+            </Overload>
+            <Overload retVal="" descr="
+Data = Buffer obj
+Size = number of bytes to use
+
+Returns = obj{Ptr, Size}">
+                <Param name="[Data, Size]" />
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="ClipboardTimeout_" />
+        
+        <KeyWord name="ComCall" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Index, ComObj [, Type1[*], Arg1, ..., ReturnType[*]]" />
+            </Overload>
+            <Overload retVal="" descr="
+Types = Str, WStr, AStr, Int64, Int, Short, Char, Float, Double, Ptr, HRESULT,
+        UInt64, UInt, UShort, UChar, UPtr
+Default ReturnType is HRESULT.">
+                <Param name="Index, ComObj [, Type1[*], Arg1, ..., ReturnType[*]]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ComObjActive" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="CLSID" />
+            </Overload>
+            <Overload retVal="" descr="
+Retrieves a registered COM obj.">
+                <Param name="CLSID" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ComObjArray" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="VarType" />
+                <Param name="Count1"/>
+                <Param name="[Count2]"/>
+                <Param name="[Count3]"/>
+                <Param name="[Count4]"/>
+                <Param name="[Count5]"/>
+                <Param name="[Count6]"/>
+                <Param name="[Count7]"/>
+                <Param name="[Count8]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Creates a SafeArray for use with COM.">
+                <Param name="VarType, Count1 [, Count2, ... Count8]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ComObjConnect" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="ComObj"/>
+                <Param name="[PrefixOrSink]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Connects a COM object's event source to the script, enabling events to be handled.">
+                <Param name="ComObj [, PrefixOrSink]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ComObjFlags" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="ComObj" />
+                <Param name="[NewFlags]"/>
+                <Param name="[Mask]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Retrieves or changes flags which control a COM wrapper object's behaviour.">
+                <Param name="ComObj [, NewFlags, Mask]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ComObjFromPtr" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="DispPtr" />
+            </Overload>
+            <Overload retVal="" descr="
+Wraps a raw IDispatch pointer (COM object) for use by the script.">
+                <Param name="DispPtr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ComObjGet" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Name" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns a reference to an object provided by a COM component.">
+                <Param name="Name" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ComObjQuery" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="ComObj" />
+                <Param name="[SID]" />
+                <Param name="IID" />
+            </Overload>
+            <Overload retVal="" descr="">
+                <Param name="ComObj" />
+                <Param name="IID" />
+            </Overload>
+            <Overload retVal="" descr="
+Queries a COM object for an interface or service.">
+                <Param name="ComObj [, SID], IID" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ComObjType" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="ComObj" />
+                <Param name="[InfoType]" />
+            </Overload>
+            <Overload retVal="" descr="
+Retrieves type information from a COM object.
+
+VT_EMPTY     :=      0  ; No value
+VT_NULL      :=      1  ; SQL-style Null
+VT_I2        :=      2  ; 16-bit signed int
+VT_I4        :=      3  ; 32-bit signed int
+VT_R4        :=      4  ; 32-bit floating-point number
+VT_R8        :=      5  ; 64-bit floating-point number
+VT_CY        :=      6  ; Currency
+VT_DATE      :=      7  ; Date
+VT_BSTR      :=      8  ; COM string (Unicode string with length prefix)
+VT_DISPATCH  :=      9  ; COM object
+VT_ERROR     :=    0xA  ; Error code (32-bit integer)
+VT_BOOL      :=    0xB  ; Boolean True (-1) or False (0)
+VT_VARIANT   :=    0xC  ; VARIANT (must be combined with VT_ARRAY or VT_BYREF)
+VT_UNKNOWN   :=    0xD  ; IUnknown interface pointer
+VT_DECIMAL   :=    0xE  ; (not supported)
+VT_I1        :=   0x10  ; 8-bit signed int
+VT_UI1       :=   0x11  ; 8-bit unsigned int
+VT_UI2       :=   0x12  ; 16-bit unsigned int
+VT_UI4       :=   0x13  ; 32-bit unsigned int
+VT_I8        :=   0x14  ; 64-bit signed int
+VT_UI8       :=   0x15  ; 64-bit unsigned int
+VT_INT       :=   0x16  ; Signed machine int
+VT_UINT      :=   0x17  ; Unsigned machine int
+VT_RECORD    :=   0x24  ; User-defined type -- NOT SUPPORTED
+VT_ARRAY     := 0x2000  ; SAFEARRAY
+VT_BYREF     := 0x4000  ; Pointer to another type of value">
+                <Param name="ComObj [, InfoType]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ComObjValue" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="ComObj" />
+            </Overload>
+            <Overload retVal="" descr="
+Retrieves the value or pointer stored in a COM wrapper object.">
+                <Param name="ComObj" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ComObject" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="CLSID" />
+                <Param name="[IID]" />
+            </Overload>
+            <Overload retVal="" descr="
+Creates a COM object.">
+                <Param name="CLSID [, IID]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ComValue" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="VarType" />
+                <Param name="Value" />
+                <Param name="[Flags]" />
+            </Overload>
+            <Overload retVal="" descr="
+Wraps a value, SafeArray or COM object for use by the script or for passing to a COM method.">
+                <Param name="VarType, Value [, Flags]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Continue" func="yes">
+            <Overload retVal="" descr="
+Continue [LoopLabel_OrLevel]
+
+Example:
+
+    outer:
+    Loop 3
+    {
+        x := A_Index
+        Loop 3
+        {
+            if (x*A_Index = 4)
+                continue outer  ; Equivalent to continue 2 or goto continue_outer.
+            MsgBox x ',' A_Index
+        }
+        continue_outer: ; For goto.
+    }"/>
+        </KeyWord>
+        <KeyWord name="ControlAddItem" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Adds element to ListBox or ComboBox.">
+                <Param name="String" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlChooseIndex" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="N" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Selects Nth item in ListBox, ComboBox, or Tab control.">
+                <Param name="N" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlChooseString" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Selects item that matches String from the beginning in ListBox, ComboBox.">
+                <Param name="String" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlClick" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Control-or-pos]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[WhichButton]" />
+                <Param name="[ClickCount]" />
+                <Param name="[Options]" />
+                <Param name="[ExcluteTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Control-or-pos:
+    ControlClick 'x100 y200', ...
+    ControlClick Var, ... (where Var is ClassNN, text, HWND, or an obj with hwnd property)
+
+Button: Left (L), Right (R), Middle (M), X1, X2, WheelUp (WU), WheelDown (WD)
+
+ClickCount: Default = 1
+
+Options:
+NA  = possible reliability improvement
+D   = press and hold mouse button
+U   = release specified mouse button
+Pos = use only 'x y' for Control-or-pos param
+Xn  = where to click, relative to control top left (default is center)
+Yn  = where to click, relative to control top left (default is center)">
+                <Param name="[[Control-or-Pos, WinTitle, WinText, WhichButton, ClickCount, Options, ExcludeTitle, ExcludeText]]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlDeleteItem" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="N" />
+                <Param name="Contrl" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Deletes Nth item from ListBox or ComboBox.">
+                <Param name="N" />
+                <Param name="Contrl" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlFindItem" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+                <Param name="Contrl" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns item index from ListBox or ComboBox where String is an exact match.">
+                <Param name="String" />
+                <Param name="Contrl" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlFocus" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlGetChecked" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlGetChoice" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns text/name of currently selected ListBox or ComboBox item.">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlGetClassNN" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlGetEnabled" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlGetExStyle" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlGetFocus" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlGetHwnd" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlGetIndex" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns currently selected index of ListBox, ComboBox, or Tab control.">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlGetItems" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns array of items from ListBox, ComboBox, or DropDownList control.">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlGetPos" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[&amp;OutX]" />
+                <Param name="[&amp;OutY]" />
+                <Param name="[&amp;OutWidth]" />
+                <Param name="[&amp;OutHeight]" />
+                <Param name="[Control]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlGetStyle" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlGetText" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlGetVisible" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlHide" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlHideDropDown" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlMove" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[X]" />
+                <Param name="[Y]" />
+                <Param name="[Width]" />
+                <Param name="[Height]" />
+                <Param name="[Control]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlSend" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Keys" />
+                <Param name="[Control]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Sends text to a control.
+Text elements such as {ENTER} and ^c are properly translated.">
+                <Param name="Keys [, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlSendText" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Keys" />
+                <Param name="[Control]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Sends text to a control.
+Text elements such as {ENTER} and ^c are sent as literal text.">
+                <Param name="Keys [, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlSetChecked" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="NewSetting" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+NewSetting:   1 = checked
+              0 = unchecked
+             -1 = toggle">
+                <Param name="NewSetting" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlSetEnabled" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="NewSetting" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+NewSetting:   1 = checked
+              0 = unchecked
+             -1 = toggle">
+                <Param name="NewSetting" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlSetExStyle" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Value:
+  Add      '+0x80'   NewStyle := CurrentStyle | Value
+  Remove   '-0x80'   NewStyle := CurrentStyle &amp; ~Value
+  Toggle   '^0x80'   NewStyle := CurrentStyle ^ Value">
+                <Param name="Value" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlSetStyle" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Value:
+  Add      '+0x80'   NewStyle := CurrentStyle | Value
+  Remove   '-0x80'   NewStyle := CurrentStyle &amp; ~Value
+  Toggle   '^0x80'   NewStyle := CurrentStyle ^ Value">
+                <Param name="Value" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlSetText" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="NewText" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlShow" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ControlShowDropDown" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="CoordMode" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="TargetType" />
+                <Param name="[RelativeTo]" />
+            </Overload>
+            <Overload retVal="" descr="
+TargetType = ToolTip, Pixel, Mouse, Caret, Menu
+
+RelativeTo = Screen (default), Window, Client
+
+The previous setting is returned.">
+                <Param name="TargetType [, RelativeTo]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Cos" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns result in radians.">
+                <Param name="Number" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Critical" func="yes">
+            <Overload retVal="" descr="
+Default = True">
+                <Param name="[True|False|TimeCheck_ms]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DateAdd" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="DateTime" />
+                <Param name="Time" />
+                <Param name="TimeUnits" />
+            </Overload>
+            <Overload retVal="" descr="
+ DateTime = YYYYMMDDHH24MISS format
+     Time = Integer or float.
+TimeUnits = Seconds (S), Minutes (M), Hours (H), Days (D)
+
+Year (if used) must be on or after 1601.">
+                <Param name="DateTime, Time, TimeUnits" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DateDiff" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="DateTime1" />
+                <Param name="DateTime2" />
+                <Param name="TimeUnits" />
+            </Overload>
+            <Overload retVal="" descr="
+TimeUnits = Seconds (S), Minutes (M), Hours (H), Days (D)
+
+Year (if used) must be on or after 1601.">
+                <Param name="DateTime1, DateTime2, TimeUnits" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DetectHiddenText" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="True|False" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DetectHiddenWindows" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="True|False" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DirCopy" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Source" />
+                <Param name="Dest" />
+                <Param name="[Overwrite_TF]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DirCreate" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="DirName" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DirDelete" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="DirName" />
+                <Param name="[Recurse_TF]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DirExist" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="FilePattern" />
+            </Overload>
+            <Overload retVal="" descr="
+R = READONLY
+A = ARCHIVE
+S = SYSTEM
+H = HIDDEN
+D = DIRECTORY
+O = OFFLINE
+C = COMPRESSED">
+                <Param name="FilePattern" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DirMove" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Source" />
+                <Param name="Dest" />
+                <Param name="[OverwriteOrRename]" />
+            </Overload>
+            <Overload retVal="" descr="
+OverwriteOrRename:
+0 = Do not overwrite
+1 = Overwrite
+2 = Same as 1 without 'limitation'
+R = Rename instead of move">
+                <Param name="Source, Dest [, OverwriteOrRename]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DirSelect" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[StartingFolder]" />
+                <Param name="[Options]" />
+                <Param name="[Prompt]" />
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+ 0 = all below are disabled
+ 1 = 'New Folder' button
++2 = edit field to type folder name
++4 = omit BIF_NEWDIALOGSTYLE - good for WinPE (no 'New Folder' button)">
+                <Param name="[StartingFolder, Options, Prompt]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DllCall" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="&#x22;DllFile\]Func&#x22; [, Type1[*], Arg1, ..., &#x22;[Cdecl] ReturnType[*]&#x22;]" />
+            </Overload>
+            <Overload retVal="" descr="
+Types = Str, WStr, AStr, Int64, Int, Short, Char, Float, Double, Ptr, HRESULT">
+                <Param name="&#x22;DllFile\]Func&#x22; [, Type1[*], Arg1, ..., &#x22;[Cdecl] ReturnType[*]&#x22;]" />
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="DllLoad_" />
+        
+        <KeyWord name="Download" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="URL" />
+                <Param name="Filename" />
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="DriveEject" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Drive]" />
+            </Overload>
+            <Overload retVal="" descr="
+Drive = X, X:, X:\, or \\?\Volume{...}">
+                <Param name="[Drive]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DriveGetCapacity" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Path" />
+            </Overload>
+            <Overload retVal="" descr="
+Path = any path contained by the drive, or UNC path">
+                <Param name="Path" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DriveGetFileSystem" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Drive" />
+            </Overload>
+            <Overload retVal="" descr="
+Drive = X:, X:\, or \\server\share">
+                <Param name="Drive" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DriveGetLabel" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Drive" />
+            </Overload>
+            <Overload retVal="" descr="
+Drive = X:, X:\, or \\server\share">
+                <Param name="Drive" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DriveGetList" func="yes">
+            <Overload retVal="" descr="
+Type = CDROM, REMOVABLE, FIXED, NETWORK, RAMDISK, UNKNOWN">
+                <Param name="[Type]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DriveGetSerial" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Drive" />
+            </Overload>
+            <Overload retVal="" descr="
+Drive = X:, X:\, or \\server\share">
+                <Param name="Drive" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DriveGetSpaceFree" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Path" />
+            </Overload>
+            <Overload retVal="" descr="
+Path = any path contained by the drive, or UNC path">
+                <Param name="Path" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DriveGetStatus" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Path" />
+            </Overload>
+            <Overload retVal="" descr="
+Path = any path contained by the drive, or UNC path
+Returns = Unknown, Ready, NotReady, Invalid">
+                <Param name="Path" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DriveGetStatusCD" func="yes">
+            <Overload retVal="" descr="
+Drive = X:
+Returns = not ready, open, playing, paused, seeking, stopped">
+                <Param name="[Drive]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DriveGetType" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Path" />
+            </Overload>
+            <Overload retVal="" descr="
+Path = any path contained by the drive, or UNC path
+Returns = Unknown, Removable, Fixed, Network, CDROM, or RAMDisk">
+                <Param name="Path" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DriveLock" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Drive" />
+            </Overload>
+            <Overload retVal="" descr="
+Drive = X:, X:\, or \\server\share">
+                <Param name="Drive" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DriveRetract" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Drive]" />
+            </Overload>
+            <Overload retVal="" descr="
+Drive = X, X:, X:\, \\?\Volume{...}">
+                <Param name="[Drive]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DriveSetLabel" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Drive" />
+                <Param name="[NewLabel]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Drive = X:, X:\, or \\server\share">
+                <Param name="Drive [, NewLabel]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="DriveUnlock" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Drive" />
+            </Overload>
+            <Overload retVal="" descr="
+Drive = X:, X:\, or \\server\share">
+                <Param name="Drive" />
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="Edit" func="yes" />
+        <KeyWord name="EditGetCurrentCol" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="EditGetCurrentLine" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="EditGetLine" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="N" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="EditGetLineCount" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="EditGetSelectedText" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="EditPaste" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+                <Param name="Control" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Else"/>
+        <KeyWord name="EnvGet" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="EnvVarName" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="EnvSet" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="EnvVar" />
+                <Param name="[Value]" />
+            </Overload>
+            <Overload retVal="" descr="">
+                <Param name="EnvVar [, Value]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Error" func="yes" />
+        
+        <KeyWord name="ErrorStdOut_" />
+        
+        <KeyWord name="Exit" func="yes">
+            <Overload retVal="" descr="
+Exits the current thread.
+ExitCode = signed 32-bit integer">
+                <Param name="[ExitCode]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ExitApp" func="yes">
+            <Overload retVal="" descr="
+Terminates the script.
+ExitCode = signed 32-bit integer">
+                <Param name="[ExitCode]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Exp" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="N" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns result of raising e to the Nth power.">
+                <Param name="N" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileAppend" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Text" />
+                <Param name="[FileName]"/>
+                <Param name="[Options]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+Encoding = UTF-8, UTF-16, etc
+     RAW = writes text without conversion
+      `n = inserts CR before LF if not already provided">
+                <Param name="Text [, FileName, Options]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileCopy" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="SourcePattern, DestPattern [, Overwrite_TF]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileCreateShortcut" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Target"/>
+                <Param name="LinkFile"/>
+                <Param name="[WorkingDir]"/>
+                <Param name="[Args]"/>
+                <Param name="[Descr]"/>
+                <Param name="[Iconfile]"/>
+                <Param name="[ShortcutKey]"/>
+                <Param name="[IconNum]"/>
+                <Param name="[RunState]"/>
+            </Overload>
+            <Overload retVal="" descr="
+RunState:
+1 = Normal
+3 = Maximized
+7 = Minimized">
+                <Param name="Target, LinkFile [, WorkingDir, Args, Descr, IconFile, ShortcutKey, IconNum, RunState]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileDelete" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="FilePattern" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileEncoding" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Encoding" />
+            </Overload>
+            <Overload retVal="" descr="
+CP0       : The system default ANSI code page. See remarks below.
+UTF-8     : Unicode UTF-8, equivalent to CP65001.
+UTF-8-RAW : As above, but no byte order mark is written when a new file is created.
+UTF-16    : Unicode UTF-16 with little endian byte order, equivalent to CP1200.
+UTF-16-RAW: As above, but no byte order mark is written when a new file is created.
+CPnnn     : A code page with numeric identifier nnn. See Code Page Identifiers ¬.
+nnn       : A numeric code page identifier.">
+                <Param name="Encoding" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileExist" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="FilePattern" />
+            </Overload>
+            <Overload retVal="" descr="
+Return:
+R = READONLY
+A = ARCHIVE
+S = SYSTEM
+H = HIDDEN
+N = NORMAL
+D = DIRECTORY
+O = OFFLINE
+C = COMPRESSED
+T = TEMPORARY
+L = REPARSE_POINT (typically a symbolic link)">
+                <Param name="FilePattern" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileGetAttrib" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Filename]" />
+            </Overload>
+            <Overload retVal="" descr="
+Return:
+R = READONLY
+A = ARCHIVE
+S = SYSTEM
+H = HIDDEN
+N = NORMAL
+D = DIRECTORY
+O = OFFLINE
+C = COMPRESSED
+T = TEMPORARY
+L = REPARSE_POINT (typically a symbolic link)">
+                <Param name="[Filename]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileGetShortcut" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="LinkFile"/>
+                <Param name="[&amp;OutTarget]"/>
+                <Param name="[&amp;OutDir]"/>
+                <Param name="[&amp;OutArgs]"/>
+                <Param name="[&amp;OutDesc]"/>
+                <Param name="[&amp;OutIcon]"/>
+                <Param name="[&amp;OutIconNum]"/>
+                <Param name="[&amp;OutRunState]"/>
+            </Overload>
+            <Overload retVal="" descr="
+OutRunState:
+1 = Normal
+3 = Maximized
+7 = Minimized">
+                <Param name="LinkFile [, &amp;OutTarget, &amp;OutDir, &amp;OutArgs, &amp;OutDescription, &amp;OutIcon, &amp;OutIconNum, &amp;OutRunState]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileGetSize" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Filename]"/>
+                <Param name="[Units]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Units:
+B = Bytes
+K = Kilobytes
+M = Megabytes">
+                <Param name="[Filename, Units]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileGetTime" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Filename]" />
+                <Param name="[WhichTime]" />
+            </Overload>
+            <Overload retVal="" descr="
+WhichTime:
+M = modification time
+C = creation time
+A = last access time">
+                <Param name="[Filename, WhichTime]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileGetVersion" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Filename]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileInstall" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Source" />
+                <Param name="Dest" />
+                <Param name="[Overwrite_TF]" />
+            </Overload>
+            <Overload retVal="" descr="
+Includes the specified file inside the compiled version of the script.">
+                <Param name="Source, Dest [, Overwrite_TF]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileMove" func="yes">
+            <Overload retVal="" descr=""> <!-- SrcPattern, DestPattern [, Overwrite_TF]"  -->
+                <Param name="SrcPattern" />
+                <Param name="DestPattern" />
+                <Param name="[Overwrite_TF]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileOpen" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Filename" />
+                <Param name="Flags"/>
+                <Param name="[Encoding]"/>
+            </Overload>
+            <Overload retVal="" descr="
+FileOpen('*', 'r')   ; for stdin
+FileOpen('*', 'w')   ; for stdout
+FileOpen('**', 'w')  ; for stderr
+
+Flags:
+r = Read
+w = Write
+a = Append
+h = Filename is handle
+
+Returns File object:
+Properties: Pos, Length, AtEOF, Encoding, Handle
+Methods: Read, Write, ReadLine, WriteLine, ReadNum[Type], WriteNum[Type],
+         RawRead, RawWrite, Seek, Close">
+                <Param name="Filename, Flags [, Encoding]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileRead" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Filename" />
+                <Param name="[Options]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+Encoding, RAW, m1024, `n">
+                <Param name="Filename [, Options]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileRecycle" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="FilePattern" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileRecycleEmpty" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[DriveLetter]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileSelect" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Options]" />
+                <Param name="[RootDir\Filename]"/>
+                <Param name="[Title]"/>
+                <Param name="[Filter]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+ D = Select folder
+ M = Multi-select (returns array)
+ S = Save dialog
+ 1 = File must exist
+ 2 = path must exist
+ 8 = prompt to create new filename
+16 = prompt to overwrite filename
+32 = don't resolve shortcuts (.lnk files)
+
+Filter (example):
+Documents (*.txt)">
+                <Param name="[Options, RootDir\Filename, Title, Filter]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileSetAttrib" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Attributes" />
+                <Param name="[FilePattern]" />
+                <Param name="[Mode]" />
+            </Overload>
+            <Overload retVal="" descr="
+Attributes:
+R = READONLY
+A = ARCHIVE
+S = SYSTEM
+H = HIDDEN
+N = NORMAL
+D = DIRECTORY
+O = OFFLINE
+C = COMPRESSED
+T = TEMPORARY
+L = REPARSE_POINT (typically a symbolic link)
+
+Mode:
+D = Include directories
+F = Include files (default when blank)
+R = Recursive into subfolders">
+                <Param name="Attributes [, FilePattern, Mode]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FileSetTime" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[YYYYMMDDHH2rMISS]" />
+                <Param name="[FilePattern]" />
+                <Param name="[WhichTime]" />
+                <Param name="[Mode]" />
+            </Overload>
+            <Overload retVal="" descr="
+WhichTime:
+M = modification time
+C = creation time
+A = last access time
+
+Mode:
+D = Include directories
+F = Include files (default when blank)
+R = Recursive into subfolders">
+                <Param name="[YYYYMMDDHH2rMISS, FilePattern, WhichTime, Mode]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Finally" func="yes">
+            <Overload retVal="" descr="
+    try {
+        ...
+    } finally {
+        ...
+    }
+
+-- OR --
+
+    try {
+        ...
+    } catch [ErrorClass] [as ErrorObj] {
+        ...
+    } else {
+        ...
+    } finally {
+        ...
+    }
+
+Must come after Try statement."/>
+        </KeyWord>
+        <KeyWord name="Float" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Floor" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns an integer after rounding down.
+
+Example:
+
+MsgBox Floor(1.9)  ; Returns 1
+MsgBox Floor(-1.2) ; Returns -2">
+                <Param name="Number" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="For" func="yes">
+            <Overload retVal="" descr="
+    For Value1 [, Value2] in Expression {
+        ...
+    }
+
+Repeats one or more statements once for each key-value pair in an object."/>
+        </KeyWord>
+        <KeyWord name="Format" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="FormatStr [, Value1, Value2, ...]" />
+            </Overload>
+            <Overload retVal="" descr="
+Any number of values can be used.  The values will be organized/ordered/formatted according to
+the FormatStr.
+
+FormatStr: '{[ValueIndex]:Format} ...
+           Any desired amount or combo of {elements} can be created, even referring to the
+           same ValueIndex, which would be useful to display the same value formatted in a
+           variety of different ways. If ValueIndex is blank, it refers to Value1.  Text
+           appearing outside {braces} is literal.
+
+Formats:
+
+{:10}    = right aligned (default alignment), 10 characters, padding with spaces
+{:-10}   = left aligned, 10 characters, paddnig with spaces
+{:010}   = 10 characters, padding with zeros
+{:d}     = value is formatted as a signed decimal integer (ie. hex to decimal)
+{:u}     = value is formatted as an unsigned decimal integer
+{:o}     = value is formatted as octal
+0x{:X}   = formats Value as hex.  Use 'x' for '0xabcd' and 'X' for '0xABCD'
+0x{:08X} = formats Value as hex, 8 characters, padded with zeros (on left)
+{:.2f}   = formats value as float, 2 decimal places">
+                <Param name="FormatStr [, Value1, Value2, ...]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="FormatTime" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[TimeDate]" />
+                <Param name="[Format]" />
+            </Overload>
+            <Overload retVal="" descr="
+TimeDate = in YYYYMMDDHH24MISS format
+Format   = formatted date or time
+
+Days   = d, dd, ddd, dddd
+Months = M, MM, MMM, MMMM
+Year   = y, yy, yyyy
+Hour   = h, hh, H, HH (capital = 24 hr)
+Min    = m, mm
+Sec    = s, ss
+AM/PM  = t, tt">
+                <Param name="[TimeDate]" />
+                <Param name="[Format]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GetKeyName" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="KeyName" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GetKeySC" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="KeyName" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GetKeyState" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="KeyName" />
+                <Param name="[Mode]" />
+            </Overload>
+            <Overload retVal="" descr="
+Mode:
+    P = physical state
+    T = toggle state (CapsLock, NumLock, ScrollLock)">
+                <Param name="KeyName [, Mode]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GetKeyVK" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="KeyName" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GetMethod" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+                <Param name="[Name]" />
+                <Param name="[ParamCount]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GoTo" func="yes">
+            <Overload retVal="" descr="
+Example:
+
+    GoTo('MyLabel')
+    MyLabel:">
+                <Param name="Label"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GroupActivate" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="GroupName" />
+                <Param name="[Mode]" />
+            </Overload>
+            <Overload retVal="" descr="
+Mode:     R = activates newest window in the series
+      blank = activates oldest window in the series">
+                <Param name="GroupName" />
+                <Param name="[Mode]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GroupAdd" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="GroupName" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Adds window to an existing group, or to a new group and creates the group.">
+                <Param name="GroupName" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GroupClose" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="GroupName" />
+                <Param name="[Mode]" />
+            </Overload>
+            <Overload retVal="" descr="
+Mode:    R = closes active window, activates newest window
+         A = all members will be closed
+     blank = closes active window, activates oldest window
+
+Closes the active window if it was just activated by GroupActivate or GroupDeactivate. It
+then activates the next window in the series. It can also close all windows in a group.">
+                <Param name="GroupName" />
+                <Param name="[Mode]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GroupDeactivate" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="GroupName" />
+                <Param name="[Mode]" />
+            </Overload>
+            <Overload retVal="" descr="
+Mode:     R = closes active window, activates newest non-member window
+      blank = closes active window, activates oldest non-member window">
+                <Param name="GroupName" />
+                <Param name="[Mode]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Gui" func="yes">
+            <Overload retVal="" descr="
+EventObj can be a class extended from Gui, in which case method names will be used
+for event callback funcs.">
+                <Param name="[Options]"/>
+                <Param name="[Title]"/>
+                <Param name="[EventObj]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GuiCtrlFromHwnd" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Hnwd" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="GuiFromHwnd" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Hnwd" />
+                <Param name="[RecurseParent_TF]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HasBase" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+                <Param name="BaseObj" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HasMethod" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+                <Param name="[Name]" />
+                <Param name="[ParamCount]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HasProp" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+                <Param name="Name" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HotIf" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="['Expression' or Function]" />
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="HotIfTimeout_" />
+        <KeyWord name="HotIf_" />
+        
+        <KeyWord name="HotIfWinActive" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HotIfWinExist" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HotIfWinNotActive" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="HotIfWinNotExist" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Hotkey" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="KeyName" />
+                <Param name="[Action]" />
+                <Param name="[Options]" />
+            </Overload>
+            <Overload retVal="" descr="
+KeyName = string
+
+Action  = Function Object, Hotkey (string), or On|Off|Toggle|AltTab
+
+Options:
+On
+Off
+B  = Enable buffering according to #MaxThreadsBuffer (B0 will disable it)
+Pn = Sets thread priority to n.
+S  = Makes hotkey exempt from Suspend (S0 to disable this status)
+Tn = Max threads (n) to be used simultaneously (#MaxThreadsPerHotkey)
+In = Input level set to n">
+                <Param name="KeyName" />
+                <Param name="[Action]" />
+                <Param name="[Options]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Hotstring" func="yes">
+            <Overload retVal="" descr="
+HotStr:
+A normal hotstring, ie. ':C:btw'
+
+Replacement:
+The replacement text, or a function/func object to call.
+
+    MyCallback(KeyName) { ...
+
+">
+                <Param name="HotStr" />
+                <Param name="[Replacement]" />
+                <Param name="[True|False|Toggle]" />
+            </Overload>
+            <Overload retVal="" descr="
+Gets or sets end chars for hotstrings.
+Default end chars: -()[]{}':;`&amp;/\,.?!`n`s`t">
+                <Param name="'EndChars'" />
+                <Param name="[NewValue]" />
+            </Overload>
+            <Overload retVal="" descr="
+Gets or sets the global settings that determines of mouse clicks reset the hotstring recognizer.
+Default end chars: -()[]{}':;`&amp;/\,.?!`n`s`t">
+                <Param name="'MouseReset'" />
+                <Param name="[True|False]" />
+            </Overload>
+            <Overload retVal="" descr="
+Immediately resets the hotstring recognizer.">
+                <Param name="'Reset'"/>
+            </Overload>
+            <Overload retVal="" descr="
+NewOptions:
+*  = translate hotstring instantly, without end chars
+?  = trigger the hotstring even if inside another word
+B0 = automatic backspacing is NOT done to erase the typed hotstring (turn on with B)
+C  = case sensitive (use C0 to turn off case sensitivity)
+C1 = do not conformed to typed case (use C0 to turn this off)
+Kn = key delay (n milliseconds) for auto replace or auto backspace
+O  = used to omit a 'custom' end char that you don't want to show in the result
+Pn = thread priority (n) of the hotstring
+R  = send as raw text (turn off with R0)
+S  = exempt from suspend (use S0 to turn this off)
+SI = use SendInput for auto replace (or SendPlay if SendInput is not available)
+SP = use SendPlay for auto replace
+SE = use SendEvent for auto replace
+T  = send chars by char code (similar to raw - disable with T0 or R0)
+X  = execute function call or expression, instead of auto replace
+Z  = prevents recursive evaluation of weirdly written hotstrings (turn off with Z0)">
+                <Param name="NewOptions"/>
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="Hotstring_" />
+        
+        <KeyWord name="If"/>
+        <KeyWord name="IL_Add" func="yes"/>
+        <KeyWord name="IL_Create" func="yes"/>
+        <KeyWord name="IL_Destroy" func="yes"/>
+        <KeyWord name="ImageSearch" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="&amp;OutX" />
+                <Param name="&amp;OutY" />
+                <Param name="X1" />
+                <Param name="Y1" />
+                <Param name="X2" />
+                <Param name="Y2" />
+                <Param name="Options_ImageFile" />
+            </Overload>
+            <Overload retVal="" descr="
+Options_ImageFile:
+A single string specifying an image file, and options (before the filename).
+
+Options (literal asterisk (*) and name):
+   *IconN = specified icon group N
+       *n = number of shades of variation of color intensity
+*Trans[N] = N is a color, ie. 'Black', 'White', 'Red', or a hex string (0xRRGGBB or RRGGBB).
+            Mostly used with PNG, TIFF, and GIF.  Makes it easier to find a match.
+*wN / *hN = Width and Height to scale the spacified image, or selects icon group.  If omitted
+            usually the small icon is used (16 x 16).  Use '*w0 *h0' to use the actual icon size.
+            Use -1 to scale for h or w to scale the img and keep aspect ratio.
+
+A Bitmap handle can be used instead of file name (HBITMAP:[Handle])
+
+Returns boolean, TRUE on success.">
+                <Param name="&amp;OutX" />
+                <Param name="&amp;OutY" />
+                <Param name="X1" />
+                <Param name="Y1" />
+                <Param name="X2" />
+                <Param name="Y2" />
+                <Param name="Options_ImageFile" />
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="IncludeAgain_" />
+        <KeyWord name="Include_" />
+        <KeyWord name="InputLevel_" />
+        
+        <KeyWord name="InStr" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Haystack" />
+                <Param name="Needle" />
+                <Param name="[CaseSense]" />
+                <Param name="[StartingPos]" />
+                <Param name="[Occurrence]" />
+            </Overload>
+            <Overload retVal="" descr="
+Error is thrown if:
+- Needle is ''
+- CaseSense is invalid
+- Occurrence or StartingPos is 0 or non-numeric.">
+                <Param name="Haystack" />
+                <Param name="Needle" />
+                <Param name="[CaseSense]" />
+                <Param name="[StartingPos]" />
+                <Param name="[Occurrence]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IniDelete" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Filename" />
+                <Param name="Section" />
+                <Param name="[SectionItem]" />
+            </Overload>
+            <Overload retVal="" descr="
+If SectionItem is omitted, the entire section is deleted.">
+                <Param name="Filename, Section [, SectionItem]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IniRead" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Filename" />
+                <Param name="Section" />
+                <Param name="[SectionItem]" />
+                <Param name="[DefaultValue]" />
+            </Overload>
+            <Overload retVal="" descr="
+The DefaultValue param is used only with the SectionItem param.
+When an entire section, or ini file is return, it is a string with `n linefeeds.">
+                <Param name="Filename, Section [, SectionItem, DefaultValue]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IniWrite" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value?" />
+                <Param name="Filename" />
+                <Param name="Section" />
+                <Param name="SectionItem" />
+            </Overload>
+            <Overload retVal="" descr="">
+                <Param name="Pairs" />
+                <Param name="Filename" />
+                <Param name="Section" />
+            </Overload>
+            <Overload retVal="" descr="
+Writes a specific Item/value to a section, or writes an entire value pair list to an ini section.">
+                <Param name="Value|Pairs, Filename, Section [, SectionItem]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="InputBox" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Prompt]" />
+                <Param name="[Title]" />
+                <Param name="[Options]" />
+                <Param name="[Default]" />
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+   Xn Yn: X and Y coords of the InputBox gui.
+   Wn Hn: W and H of the InputBox gui.
+       T: Timeout in seconds.
+Password: Shows *** in edit box.
+
+Returns obj{Value, Result}
+
+Value  = text entered by user
+Result = OK, Cancel, Timeout">
+                <Param name="[Prompt, Title, Options, Default]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="InputHook" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Options]" />
+                <Param name="[EndKeys]" />
+                <Param name="[MatchList]" />
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+B  = BackspaceIsUndo set to false
+C  = CaseSensitive set to true
+Ix = Sets MinSendLevel to Level x (1 by default)
+Lx = Length of input, x chars
+M  = Modified keystrokes such as CTRL+A thru CTRL+z are recognized and transcribed
+     if they have corresponding ASCII characters
+Tx = Timeout in seconds
+V  = Sets VisibleText and VisibleNonText to true
+*  = Sets FindAnywhere to true
+E  = Handle single-character end keys by character code instead of by keycode
+
+EndKeys:
+Zero or more keys or {SpecialKeys} that will terminate InputHook.
+
+MatchList:
+A comma-separated list of key phrases, any of which will cause the Input to be terminated.">
+                <Param name="[Options, EndKeys, MatchList]" />
+            </Overload>
+            <Overload retVal="" descr="
+Methods: KeyOpt, Start, Stop, Wait
+
+General Properties:
+EndKey, EndMods, EndReason, InProgress, Input, Match, OnEnd, OnChar, OnKeyDown, OnKeyUp
+
+Option Properties:
+BackspaceIsUndo, CaseSensitive, FindAnywhere, MinSendLevel, NotifyNonText, Timeout, VisibleNonText, VisibleText">
+                <Param name="[Options, EndKeys, MatchList]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="InstallKeybdHook" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Install]" />
+                <Param name="[Force]" />
+            </Overload>
+            <Overload retVal="" descr="
+Install: Defaults to True.
+
+Force: If this and Install are True, then the hook is uninstalled and reinstalled, thus giving
+       the script priority over other installed hooks.">
+                <Param name="[Install, Force]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="InstallMouseHook" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Install]" />
+                <Param name="[Force]" />
+            </Overload>
+            <Overload retVal="" descr="
+Install: Defaults to True.
+
+Force: If this and Install are True, then the hook is uninstalled and reinstalled, thus giving
+       the script priority over other installed hooks.">
+                <Param name="[Install, Force]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Integer" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsAlnum" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsAlpha" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsDigit" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsFloat" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsInteger" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsLabel" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsLower" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsNumber" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsObject" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsSet" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsSetRef" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsSpace" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsTime" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsUpper" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="IsXDigit" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="KeyHistory" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[MaxEvents]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="KeyWait" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="KeyName" />
+                <Param name="[Options]" />
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+D = wait for key to be pressed
+L = check logical state
+Tx = timeout, x seconds (can be decimal)">
+                <Param name="KeyName [, Options]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LTrim" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+                <Param name="[OmitChars]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ListHotkeys" func="yes" />
+        <KeyWord name="ListLines" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[True|False]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ListVars" func="yes" />
+        <KeyWord name="ListViewGetContent" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Options]" />
+                <Param name="[Control]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+        Selected = returns only selected
+         Focused = returns only focused row
+            ColN = returns column N (row sep = `n)
+           Count = returns number of rows
+  Count Selected = returns total of selected rows
+       Count Col = returns total columns">
+                <Param name="[Options]" />
+                <Param name="[Control]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Ln" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number" />
+            </Overload>
+            <Overload retVal="" descr="">
+                <Param name="Number" />
+            </Overload>
+            <Overload retVal="" descr="
+Return the natural log (base e) of Number.
+Number cannot be negative.">
+                <Param name="Number" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="LoadPicture" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Filename" />
+                <Param name="[Options]" />
+                <Param name="[&amp;OutImageType]" />
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+Wn    = Sets img hight (-1 keeps aspect ratio)
+Hn    = Sets img width (-1 keeps aspect ratio)
+IconN = Indicates which icon to use (1-based)
+GDI+  = Use GDI+ to load the image.
+
+&amp;OutImageType:
+0 = Bitmap (default img type if omitted)
+1 = Icon
+2 = Cursor">
+                <Param name="Filename [, Options, &amp;OutImageType]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Log" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number" />
+            </Overload>
+            <Overload retVal="" descr="
+Number cannot be negative.">
+                <Param name="Number" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Loop" func="yes">
+            <Overload retVal="" descr="
+Loop [Count] {
+    Statements
+}
+
+Loop Vars: A_Index (common to all loops)"/>
+            <Overload retVal="" descr="
+Loop Files, FilePattern [, Mode]
+('Loop Files' is literal, the rest are parameters.)
+
+Modes:
+D = Directories
+F = Files
+R = Recursive
+
+Loop Vars:
+A_LoopFileName
+A_LoopFileExt
+A_LoopFilePath
+A_LoopFileFullPath
+A_LoopFileShortPath
+A_LoopFileShortName
+A_LoopFileDir
+A_LoopFileTimeModified
+A_LoopFileTimeCreated
+A_LoopFileTimeAccessed
+A_LoopFileAttrib
+A_LoopFileSize
+A_LoopFileSizeKB
+A_LoopFileSizeMB
+
+Loop Functions:
+FileGetAttrib, FileGetSize, FileGetTime, FileGetVersion, FileSetAttrib, FileSetTime">
+                <Param name="Files" />
+            </Overload>
+            <Overload retVal="" descr="
+Loop Read, InputFile [, OutputFile]
+('Loop Read' is literal, the rest are parameters.)
+
+FileAppend() is used in this loop without the FileName param.  This performs better than
+making your own loop with FileAppend(), since the file remains open after each append operation.">
+                <Param name="Read" />
+            </Overload>
+            <Overload retVal="" descr="
+Loop Parse String [, DelimChars, OmitChars]
+('Loop Parse' is literal, the rest are parameters.)
+
+Loop Vars:
+A_Index (part of every loop)
+A_LoopField">
+                <Param name="Parse"/>
+            </Overload>
+            <Overload retVal="" descr="
+Loop Reg KeyName [, Mode]
+('Loop Reg' is literal, the rest are parameters.)
+
+Mode:
+K = Include keys
+V = include values (items)
+R = Recurse into subkeys
+
+Loop Vars:
+A_LoopRegName
+A_LoopRegType
+A_LoopRegKey
+A_LoopRegTimeModified
+
+Reg Types:
+REG_SZ, REG_EXPAND_SZ, REG_MULTI_SZ, REG_DWORD, REG_QWORD, REG_BINARY, REG_LINK, REG_RESOURCE_LIST,
+REG_FULL_RESOURCE_DESCRIPTOR, REG_RESOURCE_REQUIREMENTS_LIST, REG_DWORD_BIG_ENDIAN
+
+Loop Functions:
+RegRead, RegWrite([Value]), RegDelete, RegDeleteKey, RegCreateKey">
+                <Param name="Reg KeyName [, Mode]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Map" func="yes" />
+        <KeyWord name="Max" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number 1 [, Number2, ...]" />
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="MaxThreadsBuffer_" />
+        <KeyWord name="MaxThreadsPerHotkey_" />
+        <KeyWord name="MaxThreads_" />
+        
+        <KeyWord name="Menu" func="yes">
+            <Overload retVal="" descr="
+Methods:
+Add, AddStandard, Check, Delete, Disable, Enable, Insert, Rename, SetColor, SetIcon
+Show, ToggleCheck, ToggleEnable, Uncheck
+
+Properties:
+ClickCount, Default, Handle"/>
+        </KeyWord>
+        <KeyWord name="MenuBar" func="yes"/>
+        <KeyWord name="MenuFromHandle" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Handle" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MenuSelect" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[Menu]" />
+                <Param name="[SubMenu1]" />
+                <Param name="[SubMenu2]" />
+                <Param name="[SubMenu3]" />
+                <Param name="[SubMenu4]" />
+                <Param name="[SubMenu5]" />
+                <Param name="[SubMenu6]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+If WinTitle is blank, LastFoundWindow is used.  
+
+Menu: name of menu, ie. 'File', 'Edit', or '&amp;File', or position:
+      '&amp;0' = system menu
+      '&amp;1' = first menu (usually 'File')
+      '&amp;2' = 2nd menu
+
+SubMenus: name or position (same as Menu param)">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[Menu]" />
+                <Param name="[SubMenu1]" />
+                <Param name="[SubMenu2]" />
+                <Param name="[SubMenu3]" />
+                <Param name="[SubMenu4]" />
+                <Param name="[SubMenu5]" />
+                <Param name="[SubMenu6]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Min" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number 1 [, Number2, ...]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Mod" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Dividend" />
+                <Param name="Divisor" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns the remainder of the division operation.
+The sign of the result is always the same as the sign of the first parameter.
+If the 2nd param is zero, then a ZeroDivisionError is thrown.">
+                <Param name="Dividend, Divisor"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MonitorGet" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[N]" />
+                <Param name="[&amp;Left]" />
+                <Param name="[&amp;Top]" />
+                <Param name="[&amp;Right]" />
+                <Param name="[&amp;Bottom]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MonitorGetCount" func="yes">
+            <Overload retVal="" descr=""/>
+        </KeyWord>
+        <KeyWord name="MonitorGetName" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[N]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MonitorGetPrimary" func="yes">
+            <Overload retVal="" descr=""/>
+        </KeyWord>
+        <KeyWord name="MonitorGetWorkArea" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[N]" />
+                <Param name="[&amp;Left]" />
+                <Param name="[&amp;Top]" />
+                <Param name="[&amp;Right]" />
+                <Param name="[&amp;Bottom]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MouseClick" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WhichButton]" />
+                <Param name="[X]" />
+                <Param name="[Y]" />
+                <Param name="[ClickCount]" />
+                <Param name="[Speed]" />
+                <Param name="[DownOrUp]" />
+                <Param name="[Relative]" />
+            </Overload>
+            <Overload retVal="" descr="
+WhichButton:
+Left (L), Right (R), Middle (M), X1, X2
+
+Speed:
+From 0 - 100 ... 0 moves the mouse instantly.
+
+DownOrUp:
+D = down (default)
+U = up
+
+Relative:
+Specify 'R' here to make the X/Y coords relative to the current mouse position.">
+                <Param name="[WhichButton]" />
+                <Param name="[X]" />
+                <Param name="[Y]" />
+                <Param name="[ClickCount]" />
+                <Param name="[Speed]" />
+                <Param name="[DownOrUp]" />
+                <Param name="[Relative]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MouseClickDrag" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WhichButton]" />
+                <Param name="[X1]" />
+                <Param name="[X2]" />
+                <Param name="X2" />
+                <Param name="Y2" />
+                <Param name="[Speed]" />
+                <Param name="[Relative]" />
+            </Overload>
+            <Overload retVal="" descr="
+WhichButton:
+Left (L), Right (R), Middle (M), X1, X2
+
+Speed:
+From 0 - 100 ... 0 moves the mouse instantly.
+
+Relative:
+Specify 'R' here to make the X/Y coords relative to the current mouse position.">
+                <Param name="[WhichButton]" />
+                <Param name="[X1]" />
+                <Param name="[X2]" />
+                <Param name="X2" />
+                <Param name="Y2" />
+                <Param name="[Speed]" />
+                <Param name="[Relative]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MouseGetPos" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[&amp;OutX]" />
+                <Param name="[&amp;OutY]" />
+                <Param name="[&amp;OutVarWinHwnd]" />
+                <Param name="[&amp;OutVarControl]" />
+                <Param name="[Flag]" />
+            </Overload>
+            <Overload retVal="" descr="
+Flags:
+0 = ClassNN in &amp;OutVarControl
+1 = simpler detection method for &amp;OutVarControl (less reliable)
+2 = Stores control hwnd in &amp;OutVarControl">
+                <Param name="[&amp;OutX]" />
+                <Param name="[&amp;OutY]" />
+                <Param name="[&amp;OutVarWin]" />
+                <Param name="[&amp;OutVarControl]" />
+                <Param name="[Flag]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MouseMove" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="X" />
+                <Param name="Y" />
+                <Param name="[Speed]" />
+                <Param name="[Relative]" />
+            </Overload>
+            <Overload retVal="" descr="
+Speed:
+From 0 - 100 ... 0 moves the mouse instantly.
+
+Relative:
+Specify 'R' here to make the X/Y coords relative to the current mouse position.">
+                <Param name="X" />
+                <Param name="Y" />
+                <Param name="[Speed]" />
+                <Param name="[Relative]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="MsgBox" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Text]" />
+                <Param name="[Title]" />
+                <Param name="[Options]" />
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+Owner[Handle]
+T[Seconds]
+
+More Options:
+
+Group #1 Buttons:
+                         OK: 0
+                 OK, Cancel: 1
+       Abort, Retry, Ignore: 2
+            Yes, No, Cancel: 3
+                    Yes, No: 4
+              Retry, Cancel: 5
+Cancel, Try Again, Continue: 6
+
+Returns: Yes, Cancel, No, Abort, Retry, Ignore, TryAgain, Continue, Timeout
+         If MsgBox can't be displayed, or another weird error happens, then '' is returned.
+
+More options on next page ...">
+                <Param name="[Text, Title, Options]"/>
+            </Overload>
+            <Overload retVal="" descr="
+More Options:
+
+Group #2 Icon:
+    Icon Hand/Stop: 16 (0x10) 'Iconx'
+     Icon Question: 32 (0x20) 'Icon?'
+  Icon Exclamation: 48 (0x30) 'Icon!'
+Icon Asterisk/Info: 64 (0x40) 'Iconi'
+
+More options on next page ...">
+                <Param name="[Text, Title, Options]"/>
+            </Overload>
+            <Overload retVal="" descr="
+More Options:
+
+Group #3 Default Button:
+2nd btn: 256 (0x100) 'Default2'
+3rd btn: 512 (0x200) 'Default3'
+4th btn: 768 (0x300) 'Default4'
+
+More options on next page ...">
+                <Param name="[Text, Title, Options]"/>
+            </Overload>
+            <Overload retVal="" descr="
+More Options:
+
+Group #4 Modality:
+    System Modal: 4096 (0x1000) (always on top)
+      Task Modal: 8192 (0x2000)
+No Titlebar Icon: 262144 (0x40000) (... and always on top)
+
+More options on next page ...">
+                <Param name="[Text, Title, Options]"/>
+            </Overload>
+            <Overload retVal="" descr="
+More Options:
+
+Group #5 Other Options:
+  Help Button: 16384     (0x4000)
+Right Justify: 524288   (0x80000)
+Right-to-left: 1048576 (0x100000)
+
+More options on next page ...">
+                <Param name="[Text, Title, Options]"/>
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="NoTrayIcon_" />
+        
+        <KeyWord name="NumGet" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Source [, Offset], Type" />
+            </Overload>
+            <Overload retVal="" descr="
+Types = UInt, UInt64, Int, Int64, Short, UShort, Char, UChar, Double, Float, Ptr or UPtr">
+                <Param name="Source [, Offset], Type" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="NumPut" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Type, Num [, Type2, Num2, ...] Target [, Offset]" />
+            </Overload>
+            <Overload retVal="" descr="
+Types = UInt, UInt64, Int, Int64, Short, UShort, Char, UChar, Double, Float, Ptr or UPtr">
+                <Param name="Type, Num [, Type2, Num2, ...] Target [, Offset]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="OnError" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Callback"/>
+                <Param name="[AddRemove]"/>
+            </Overload>
+            <Overload retVal="" descr="
+AddRemove:
+ 0 = Unregister callback
+-1 = Call before previously registered
+ 1 = Call after previously registered (default)
+
+    MyCallback(Thrown, Mode) { ...
+
+Thrown = ErrorObject
+Mode:
+ 0: Allow error handling to proceed as normal.  This value can also be ''.
+ 1: Suppress the default error dialog and any remaining error callbacks
+-1: As above, but if Mode (the second parameter) contains the word Return,
+    execution of the current thread is permitted to continue.">
+                <Param name="Callback [, AddRemove]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="OnExit" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Callback"/>
+                <Param name="[AddRemove]"/>
+            </Overload>
+            <Overload retVal="" descr="
+AddRemove:
+ 0 = Unregister callback
+-1 = Call before previously registered
+ 1 = Call after previously registered (default)
+
+    MyCallback(ExitReason, ExitCode) { ...
+
+ExitReason = Logoff, Shutdown, Close, error, Menu, Exit, Reload, Single
+ExitCode   = Signed 32-bit integer">
+                <Param name="Callback [, AddRemove]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="OSError" func="yes" />
+        <KeyWord name="ObjAddRef" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Ptr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ObjBindMethod" func="yes" />
+        <KeyWord name="ObjGetBase" func="yes" />
+        <KeyWord name="ObjGetCapacity" func="yes" />
+        <KeyWord name="ObjHasOwnProp" func="yes" />
+        <KeyWord name="ObjOwnPropCount" func="yes" />
+        <KeyWord name="ObjOwnProps" func="yes" />
+        <KeyWord name="ObjPtr" func="yes" />
+        <KeyWord name="ObjRelease" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Ptr" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ObjSetBase" func="yes" />
+        <KeyWord name="ObjSetCapacity" func="yes" />
+        <KeyWord name="OnClipboardChange" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Callback" />
+                <Param name="[AddRemove]"/>
+            </Overload>
+            <Overload retVal="" descr="
+AddRemove:
+ 1 = Call after previously registered
+-1 = Call before previously registered
+ 0 = Do not call (unregister)
+
+Callback:  MyCallback(DataType)
+DataType:
+ 0 = Clipboard is now empty.
+ 1 = Clipboard contains text.
+ 2 = Clipboard contains non-text">
+                <Param name="Callback [, AddRemove]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="OnMessage" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="MsgNumber" />
+                <Param name="Callback" />
+                <Param name="[MaxThreads]" />
+            </Overload>
+            <Overload retVal="" descr="
+MaxThreads = Max number of simultaneous threads that can use the callback at any given time.
+             Specify zero to unregister the callback.
+             Specify negative numbers to do the same, but call the callback before other
+             registered callbacks.
+
+    MyCallback(wParam, lParam, msg, hwnd) { ...">
+                <Param name="MsgNumber, Callback [, MaxThreads]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Ord" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="OutputDebug" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Text" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Pause" func="yes">
+            <Overload retVal="" descr="
+NewState:
+ 1 = Pause the current thread (default if omitted)
+ 0 = Unpauses the underlying thread
+-1 = Toggle the puase state on the underlying thread">
+                <Param name="[NewState]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Persistent" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[True|False]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PixelGetColor" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="X" />
+                <Param name="Y" />
+                <Param name="[Mode]" />
+            </Overload>
+            <Overload retVal="" descr="
+Mode:
+Alt  = alternate method (use if normal method doesn't work properly - 10% slower)
+Slow = another method to get color, may work for some full-screen apps
+
+Returns hex color string.">
+                <Param name="X" />
+                <Param name="Y" />
+                <Param name="[Mode]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PixelSearch" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="&amp;OutX" />
+                <Param name="&amp;OutY" />
+                <Param name="X1" />
+                <Param name="Y1" />
+                <Param name="X2" />
+                <Param name="Y2" />
+                <Param name="ColorID" />
+                <Param name="[Variation]" />
+            </Overload>
+            <Overload retVal="" descr="
+ColorID   = hex color (0xRRGGBB)
+Variation = Integer (0 - 255) indicating degree of color intensity variance.
+
+Returns boolean, TRUE on success.">
+                <Param name="&amp;OutX" />
+                <Param name="&amp;OutY" />
+                <Param name="X1" />
+                <Param name="Y1" />
+                <Param name="X2" />
+                <Param name="Y2" />
+                <Param name="ColorID" />
+                <Param name="[Variation]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="PostMessage" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="MsgNumber" />
+                <Param name="[wParam]" />
+                <Param name="[lParam]" />
+                <Param name="[Control]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ProcessClose" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="PIDorName" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ProcessExist" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[PIDorName]" />
+            </Overload>
+            <Overload retVal="" descr="
+If omitted, script's own PID is used.">
+                <Param name="[PIDorName]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ProcessGetName" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[PIDorName]" />
+            </Overload>
+            <Overload retVal="" descr="
+If omitted, script's own PID is used.">
+                <Param name="[PIDorName]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ProcessGetParent" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[PIDorName]" />
+            </Overload>
+            <Overload retVal="" descr="
+If omitted, script's own PID is used.">
+                <Param name="[PIDorName]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ProcessGetPath" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[PIDorName]" />
+            </Overload>
+            <Overload retVal="" descr="
+If omitted, script's own PID is used.">
+                <Param name="[PIDorName]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ProcessSetPriority" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Level" />
+                <Param name="[PIDorName]"/>
+            </Overload>
+            <Overload retVal="" descr="
+If omitted, script's own PID is used.">
+                <Param name="Level" />
+                <Param name="[PIDorName]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ProcessWait" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="PIDorName"/>
+                <Param name="[Timeout]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Waits indefinitely if no timeout is specified.">
+                <Param name="PIDorName"/>
+                <Param name="[Timeout]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="ProcessWaitClose" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="PIDorName"/>
+                <Param name="[Timeout]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Waits indefinitely if no timeout is specified.">
+                <Param name="PIDorName"/>
+                <Param name="[Timeout]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RTrim" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+                <Param name="[OmitChars]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Random" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Min]" />
+                <Param name="[Max]" />
+            </Overload>
+            <Overload retVal="" descr="
+Min and Max can decimals or integers.
+
+If one param is omitted, that param is set to zero.">
+                <Param name="[Min, Max]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RegCreateKey" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="KeyName" />
+            </Overload>
+            <Overload retVal="" descr="
+KeyName:
+Must start with a hive, ie:
+    HKEY_LOCAL_MACHINE (HKLM)
+    HKEY_USERS (HKU)
+    HKEY_CURRENT_USER (HKCU)
+    HKEY_CLASSES_ROOT (HKCR)
+    HKEY_CURRENT_CONFIG (HKCC)
+
+KeyName can be omitted in a Reg Loop.">
+                <Param name="KeyName" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RegDelete" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="KeyName" />
+                <Param name="[ItemName]" />
+            </Overload>
+            <Overload retVal="" descr="
+KeyName:
+Must start with a hive, ie:
+    HKEY_LOCAL_MACHINE (HKLM)
+    HKEY_USERS (HKU)
+    HKEY_CURRENT_USER (HKCU)
+    HKEY_CLASSES_ROOT (HKCR)
+    HKEY_CURRENT_CONFIG (HKCC)
+
+    KeyName can be omitted in a Reg Loop.
+
+ItemName:
+If omitted, the key's default value is acted on.">
+                <Param name="KeyName" />
+                <Param name="[ItemName]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RegDeleteKey" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="KeyName" />
+            </Overload>
+            <Overload retVal="" descr="
+KeyName:
+Must start with a hive, ie:
+    HKEY_LOCAL_MACHINE (HKLM)
+    HKEY_USERS (HKU)
+    HKEY_CURRENT_USER (HKCU)
+    HKEY_CLASSES_ROOT (HKCR)
+    HKEY_CURRENT_CONFIG (HKCC)
+
+    KeyName can be omitted in a Reg Loop.">
+                <Param name="KeyName" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RegExMatch" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Haystack" />
+                <Param name="NeedleRegEx" />
+                <Param name="[&amp;OutVar]" />
+                <Param name="[StartingPos]" />
+            </Overload>
+            <Overload retVal="" descr="
+RegEx short help:
+
+{min,max}
+         \s = whitespace
+    (?=...) = look ahead positive
+    (?!...) = look ahead negative
+(?&lt;=...) = look behind positive
+(?&lt;!...) = look behind negative
+    \Q...\E = literal text
+       *UCP = enables expanded Unicode matching">
+                <Param name="Haystack" />
+                <Param name="NeedleRegEx" />
+                <Param name="[&amp;OutVar]" />
+                <Param name="[StartingPos]" />
+            </Overload>
+            <Overload retVal="" descr="
+Match object:
+  Members: o.Pos[n] / o.Pos(n)
+           o.Len[n] / o.Len(n)
+           o.Name[n] / o.Name(n)
+           o.Count
+           o.Mark
+           o[] / o[n]
+           o[0] = returns overall match">
+                <Param name="Haystack" />
+                <Param name="NeedleRegEx" />
+                <Param name="[&amp;OutVar]" />
+                <Param name="[StartingPos]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RegExReplace" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Haystack" />
+                <Param name="NeedleRegEx" />
+                <Param name="[Replacement]" />
+                <Param name="[&amp;OutVarCount]" />
+                <Param name="[Limit]" />
+                <Param name="[StartingPos]" />
+            </Overload>
+            <Overload retVal="" descr="
+Replacement: Must be a string, can contain $1-$9 for sub-pattern matches.  For values over 9,
+             use ${10}, ${11}, etc.  Convert case with:
+             $U{#} = uppercase
+             $L{#} = lowercase
+             $T{#} = title case
+
+RegEx short help:
+
+{min,max}
+         \s = whitespace
+    (?=...) = look ahead positive
+    (?!...) = look ahead negative
+(?&lt;=...) = look behind positive
+(?&lt;!...) = look behind negative
+    \Q...\E = literal text
+       *UCP = enables expanded Unicode matching">
+                <Param name="Haystack" />
+                <Param name="NeedleRegEx" />
+                <Param name="[Replacement]" />
+                <Param name="[&amp;OutVarCount]" />
+                <Param name="[Limit]" />
+                <Param name="[StartingPos]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RegRead" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="KeyName" />
+                <Param name="[ItemName]" />
+                <Param name="[Default]" />
+            </Overload>
+            <Overload retVal="" descr="
+KeyName:
+Must start with a hive, ie:
+    HKEY_LOCAL_MACHINE (HKLM)
+    HKEY_USERS (HKU)
+    HKEY_CURRENT_USER (HKCU)
+    HKEY_CLASSES_ROOT (HKCR)
+    HKEY_CURRENT_CONFIG (HKCC)
+
+    KeyName can be omitted in a Reg Loop.
+
+ItemName:
+If omitted, the key's default value will be acted on.
+
+Default:
+Returns a default value you specify, instead of throwing an error when an item cannot be read.">
+                <Param name="KeyName" />
+                <Param name="[ItemName]" />
+                <Param name="[Default]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RegWrite" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+                <Param name="ItemValueType" />
+                <Param name="KeyName" />
+                <Param name="[ItemName]" />
+            </Overload>
+            <Overload retVal="" descr="
+ItemValueType:
+REG_SZ, REG_EXPAND_SZ, REG_MULTI_SZ, REG_DWORD, or REG_BINARY
+
+KeyName:
+Must start with a hive, ie:
+    HKEY_LOCAL_MACHINE (HKLM)
+    HKEY_USERS (HKU)
+    HKEY_CURRENT_USER (HKCU)
+    HKEY_CLASSES_ROOT (HKCR)
+    HKEY_CURRENT_CONFIG (HKCC)
+
+    KeyName can be omitted in a Reg Loop.
+
+ItemName:
+If omitted, the key's default value will be acted on.">
+                <Param name="Value" />
+                <Param name="ItemValueType" />
+                <Param name="KeyName" />
+                <Param name="[ItemName]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Reload"/>
+        
+        <KeyWord name="Requires_" />
+        
+        <KeyWord name="Return"/>
+        <KeyWord name="Round" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number" />
+                <Param name="[N]" />
+            </Overload>
+            <Overload retVal="" descr="
+N = an integer
+
+If N is zero or omitted, output is rounded to nearest integer.
+If N is positive, Number is rounded to N decimal places.
+If N is negative, Number is rounded by N digits to the left of the decimal point.">
+                <Param name="Number [, N]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Run" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="TargetCmd" />
+                <Param name="[WorkingDir]" />
+                <Param name="[Options]" />
+                <Param name="[&amp;OutPID]" />
+            </Overload>
+            <Overload retVal="" descr="
+Options: Min, Max, Hide
+
+*RunAs Administrator:
+    Run('*RunAs ' cmd)
+
+Note: See help file for limitations">
+                <Param name="TargetCmd" />
+                <Param name="[WorkingDir]" />
+                <Param name="[Options]" />
+                <Param name="[&amp;OutPID]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RunAs" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[User]" />
+                <Param name="[Password]" />
+                <Param name="[Domain]" />
+            </Overload>
+            <Overload retVal="" descr="
+See Run() or RunAs() for a more reliable way to elevate scripts to Administrator.">
+                <Param name="[User]" />
+                <Param name="[Password]" />
+                <Param name="[Domain]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="RunWait" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="TargetCmd" />
+                <Param name="[WorkingDir]" />
+                <Param name="[Options]" />
+                <Param name="[&amp;OutPID]" />
+            </Overload>
+            <Overload retVal="" descr="
+Options: Min, Max, Hide
+
+*RunAs Administrator:
+    RunWait('*RunAs ' cmd)
+
+Note: See help file for limitations">
+                <Param name="TargetCmd" />
+                <Param name="[WorkingDir]" />
+                <Param name="[Options]" />
+                <Param name="[&amp;OutPID]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Send" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Keys" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SendEvent" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Keys" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SendInput" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Keys" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SendLevel" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Level" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SendMessage" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="MsgNumber" />
+                <Param name="[wParam]" />
+                <Param name="[lParam]" />
+                <Param name="[Control]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+                <Param name="[Timeout]" />
+            </Overload>
+            <Overload retVal="" descr="
+Timeout: Defaults to 5000 ms.  On timeout, a TimeoutError is thrown.">
+                <Param name="MsgNumber" />
+                <Param name="[wParam]" />
+                <Param name="[lParam]" />
+                <Param name="[Control]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+                <Param name="[Timeout]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SendMode" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Mode" />
+            </Overload>
+            <Overload retVal="" descr="
+Mode = Event, Input (default), InputThenPlay, Play">
+                <Param name="Mode" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SendPlay" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Keys" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SendText" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Keys" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetCapsLockState" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[True|False|AlwaysOn]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetControlDelay" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Delay" />
+            </Overload>
+            <Overload retVal="" descr="
+Delay: -1 = no delay at all
+        0 = smallest delay possible
+       &gt;0 = delay in ms (default is 20)">
+                <Param name="Delay" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetDefaultMouseSpeed" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Speed" />
+            </Overload>
+            <Overload retVal="" descr="
+Speed = between 0 (fastest) and 100.">
+                <Param name="Speed" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetKeyDelay" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Delay_ms]" />
+                <Param name="[PressDuration_ms]" />
+                <Param name="[&amp;Play&amp;]" />
+            </Overload>
+            <Overload retVal="" descr="
+Delay and PressDuration:
+Specify -1 for no delay at all, and zero for the smallest possible delay.  If either of these params
+is omitted, the current value is not changed.
+
+Play:
+If blank, applies to normal SendEvent.  If &amp;Play&amp; is specified, applies to SendPlay.">
+                <Param name="[Delay_ms]" />
+                <Param name="[PressDuration_ms]" />
+                <Param name="[&amp;Play&amp;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetMouseDelay" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Delay_ms" />
+                <Param name="[&amp;Play&amp;]" />
+            </Overload>
+            <Overload retVal="" descr="
+Delay:
+Specify -1 for no delay at all, and zero for the smallest possible delay.
+
+Play:
+If blank, applies to normal SendEvent.  If &amp;Play&amp; is specified, applies to SendPlay.">
+                <Param name="Delay_ms" />
+                <Param name="[&amp;Play&amp;]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetNumLockState" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[True|False|AlwaysOn]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetRegView" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="32|64" />
+            </Overload>
+            <Overload retVal="" descr="
+The previous setting is returned.">
+                <Param name="32|64" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetScrollLockState" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[True|False|AlwaysOn]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetStoreCapsLockMode" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="True|False" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetTimer" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Function]"/>
+                <Param name="[Period_ms]"/>
+                <Param name="[Priority]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Period = in milliseconds.  Duration/frequency of timer.  If negative, the function is
+         called once.  If positive, the function is repeated.  If Period is zero, the
+         timer is cancelled.
+Priority = Thread priority (signed 32-bit integer).">
+                <Param name="[Function, Period, Priority]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetTitleMatchMode" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Mode_or_Speed" />
+            </Overload>
+            <Overload retVal="" descr="
+Mode_or_Speed:
+     1 = Window's title must START with WinTitle
+     2 = Window's title can contain WinTitle (default)
+     3 = Window's title must exactly match WinTitle
+ RegEx = WinTitle, WinText, ExcludeTitle, and ExcludeText accept RegEx
+           Each component will be separate:
+           &#x22;i)^untitled ahk_class i)^notepad$ ahk_pid &#x22; mypid, i)^untitled and i)^notepad$
+'Fast' = Default.  Detects most windows.
+'Slow' = More thorough window searching, but slower.">
+                <Param name="Mode_or_Speed" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetWinDelay" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Delay_ms" />
+            </Overload>
+            <Overload retVal="" descr="
+Delay: -1 = no delay
+        0 = smallest delay possible
+       &gt;0 = delay in ms">
+                <Param name="Delay_ms" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SetWorkingDir" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="DirName" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Shutdown" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Flag" />
+            </Overload>
+            <Overload retVal="" descr="
+Flag: (combination)
+0 = Logoff
+1 = Shutdown
+2 = Reboot
+4 = Force
+8 = Power down">
+                <Param name="Flag" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Sin" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns result in radians.">
+                <Param name="Number" />
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="SingleInstance_" />
+        
+        <KeyWord name="Sleep" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Delay_ms"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Sort" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+                <Param name="[Options]" />
+                <Param name="[Callback]" />
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+C1       = case sensitive
+C0       = case insensitive
+CL       = caes sense based on locale
+CLogical = numbers in strings are considered numerical
+Dx       = sets delimiter x (default is `n)
+N        = numeric sort
+Pn       = do comparison starting at char n (default = 1)
+R        = sorts in reverse order
+Random   = sorts in random order
+U        = removes duplicate items
+Z        = trailing blank items are separate items
+\        = sort on substring after LAST backslash (ignores N and P)">
+                <Param name="String" />
+                <Param name="[Options]" />
+                <Param name="[Callback]" />
+            </Overload>
+            <Overload retVal="" descr="
+Callback:
+
+MyCallback(First, Second, Offset) { ...
+
+First  = first item to compare
+Second = second item to compare
+Offset = the offset from First to Second in the original list
+
+Callback return value:
+
+If First &gt; Second, then return positive number
+If First = Second, then return zero
+If First &lt; Second, then return negative number
+">
+                <Param name="String" />
+                <Param name="[Options]" />
+                <Param name="[Callback]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SoundBeep" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Frequency]" />
+                <Param name="[Duration]" />
+            </Overload>
+            <Overload retVal="" descr="
+Frequency = Number (37 - 32767) specifying frequency of beep (default = 523).
+Duration  = in milliseconds (default = 150)">
+                <Param name="[Frequency]" />
+                <Param name="[Duration]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SoundGetInterface" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="IID" />
+                <Param name="[Component]" />
+                <Param name="[Device]" />
+            </Overload>
+            <Overload retVal="" descr="
+      IID: GUID of interface {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+
+Component: Index (1-based) or name/partial name (case sensitive) of component, ie. 'Line In:2'
+           If omitted or blank '', then the interface for master controls are used
+
+   Device: Index (1-based) or name/partial name (case sensitive) of device, ie. 'Speakers:2'
+           If omitted or blank '', then the interface for master controls are used
+
+Note: Component/Device names may be numerical, contain colons, or non-existent.  If a
+      device/component has no display name, then referring to it by index is necessary.">
+                <Param name="IID" />
+                <Param name="[Component]" />
+                <Param name="[Device]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SoundGetMute" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Component]" />
+                <Param name="[Device]" />
+            </Overload>
+            <Overload retVal="" descr="
+Component: Index (1-based) or name/partial name (case sensitive) of component, ie. 'Line In:2'
+           If omitted or blank '', then the interface for master controls are used
+
+   Device: Index (1-based) or name/partial name (case sensitive) of device, ie. 'Speakers:2'
+           If omitted or blank '', then the interface for master controls are used
+
+Note: Component/Device names may be numerical, contain colons, or non-existent.  If a
+      device/component has no display name, then referring to it by index is necessary.
+
+Returns boolean, TRUE for muted.">
+                <Param name="[Component]" />
+                <Param name="[Device]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SoundGetName" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Component]" />
+                <Param name="[Device]" />
+            </Overload>
+            <Overload retVal="" descr="
+Component: Index (1-based) or name/partial name (case sensitive) of component, ie. 'Line In:2'
+           If omitted or blank '', then the interface for master controls are used
+
+   Device: Index (1-based) or name/partial name (case sensitive) of device, ie. 'Speakers:2'
+           If omitted or blank '', then the interface for master controls are used
+
+Note: Component/Device names may be numerical, contain colons, or non-existent.  If a
+      device/component has no display name, then referring to it by index is necessary.
+
+Return value can be ''.">
+                <Param name="[Component]" />
+                <Param name="[Device]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SoundGetVolume" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Component]" />
+                <Param name="[Device]" />
+            </Overload>
+            <Overload retVal="" descr="
+Component: Index (1-based) or name/partial name (case sensitive) of component, ie. 'Line In:2'
+           If omitted or blank '', then the interface for master controls are used
+
+   Device: Index (1-based) or name/partial name (case sensitive) of device, ie. 'Speakers:2'
+           If omitted or blank '', then the interface for master controls are used
+
+Note: Component/Device names may be numerical, contain colons, or non-existent.  If a
+      device/component has no display name, then referring to it by index is necessary.
+
+Returns float (0.0 - 100.0)">
+                <Param name="[Component]" />
+                <Param name="[Device]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SoundPlay" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Filename" />
+                <Param name="[Wait]" />
+            </Overload>
+            <Overload retVal="" descr="
+Filename: The name of the file to play, or a 'system sound'.
+          System sounds: *-1 = beep
+                         *16 = Hand (stop/error)
+                         *32 = Question
+                         *48 = Exclamation
+                         *64 = Asterisk (info)
+
+    Wait: Boolean. If TRUE, waits for the sound to play before processing next
+          statement or line of code.">
+                <Param name="Filename" />
+                <Param name="[Wait]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SoundSetMute" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="NewSetting" />
+                <Param name="[Component]" />
+                <Param name="[Device]" />
+            </Overload>
+            <Overload retVal="" descr="
+NewSetting: 1 = on
+            0 = off
+           -1 = toggle
+
+Component: Index (1-based) or name/partial name (case sensitive) of component, ie. 'Line In:2'
+           If omitted or blank '', then the interface for master controls are used
+
+   Device: Index (1-based) or name/partial name (case sensitive) of device, ie. 'Speakers:2'
+           If omitted or blank '', then the interface for master controls are used
+
+Note: Component/Device names may be numerical, contain colons, or non-existent.  If a
+      device/component has no display name, then referring to it by index is necessary.">
+                <Param name="NewSetting" />
+                <Param name="[Component]" />
+                <Param name="[Device]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SoundSetVolume" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="NewSetting" />
+                <Param name="[Component]" />
+                <Param name="[Device]" />
+            </Overload>
+            <Overload retVal="" descr="
+NewSetting: Integer/Float (0 - 100) to set the volume.
+            The value can have a + or - prepended which will add/subtract from current volume.
+
+Component: Index (1-based) or name/partial name (case sensitive) of component, ie. 'Line In:2'
+           If omitted or blank '', then the interface for master controls are used
+
+   Device: Index (1-based) or name/partial name (case sensitive) of device, ie. 'Speakers:2'
+           If omitted or blank '', then the interface for master controls are used
+
+Note: Component/Device names may be numerical, contain colons, or non-existent.  If a
+      device/component has no display name, then referring to it by index is necessary.">
+                <Param name="NewSetting" />
+                <Param name="[Component]" />
+                <Param name="[Device]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SplitPath" func="yes">
+            <Overload retVal="" descr="
+Splits a file path into vars.">
+                <Param name="Path" />
+                <Param name="[&amp;OutFileName]" />
+                <Param name="[&amp;OutDir]" />
+                <Param name="[&amp;OutExt]" />
+                <Param name="[&amp;OutNameNoExt]" />
+                <Param name="[&amp;OutDrive]" />
+            </Overload>
+            <Overload retVal="" descr="
+Splits a URL into vars.
+
+OutDir   = http://domain.com/dir
+OutDrive = http://domain.com">
+                <Param name="URL" />
+                <Param name="[&amp;OutFileName]" />
+                <Param name="[&amp;OutDir]" />
+                <Param name="[&amp;OutExt]" />
+                <Param name="[&amp;OutNameNoExt]" />
+                <Param name="[&amp;OutDrive]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Sqrt" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number" />
+            </Overload>
+            <Overload retVal="" descr="
+Number cannot be negative.">
+                <Param name="Number" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="StatusBarGetText" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[PartNum]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+PartNum: If omitted, defaults to 1.
+
+Default timeout is 2000 ms, then an OSError is thrown.">
+                <Param name="[PartNum]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="StatusBarWait" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[BarText]" />
+                <Param name="[Timeout]" />
+                <Param name="[PartNum]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+BarText: If blank, waits for StatusBar part# to become blank.  Otherwise waits for specified
+         part# to contain specified text.
+
+Timeout: Seconds to wait, defaults to 1.  Accepts float.  If timeout is reached, then 0 is returned.
+
+PartNum: If omitted, defaults to 1.
+
+Default timeout is 2000 ms, then an OSError is thrown.">
+                <Param name="[BarText]" />
+                <Param name="[Timeout]" />
+                <Param name="[PartNum]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="StrCompare" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String1" />
+                <Param name="String2" />
+                <Param name="[CaseSense]" />
+            </Overload>
+            <Overload retVal="" descr="
+CaseSense: True|False|Locale|Logical (str or num)
+
+Logical = numbers in strings are numerical
+
+If String1 &gt; String2, returns positive number
+If String1 = String2, returns 0
+If String1 &lt; String2, returns negative number">
+                <Param name="String1" />
+                <Param name="String2" />
+                <Param name="[CaseSense]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="StrGet" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Source" />
+                <Param name="Length?" />
+                <Param name="[Encoding]"/>
+            </Overload>
+            <Overload retVal="" descr="">
+                <Param name="Source" />
+                <Param name="[Encoding]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Length = number of characters to read">
+                <Param name="Source [, Length, Encoding]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="StrLen" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="StrLower" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="StrPtr" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="StrPut" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String"/>
+                <Param name="Target?"/>
+                <Param name="Length?"/>
+                <Param name="[Encoding]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Target = Buffer-like obj or Address">
+                <Param name="String"/>
+                <Param name="Target?"/>
+                <Param name="[Encoding]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Target = Buffer-like obj or Address
+Returns buffer size, including null terminator.">
+                <Param name="String"/>
+                <Param name="[Encoding]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="StrReplace" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Haystack" />
+                <Param name="Needle" />
+                <Param name="[ReplaceText]" />
+                <Param name="[CaseSense]" />
+                <Param name="[&amp;OutVarCount]" />
+                <Param name="[Limit]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="StrSplit" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+                <Param name="[Delimiters]" />
+                <Param name="[OmitChars]" />
+                <Param name="[MaxParts]" />
+            </Overload>
+            <Overload retVal="" descr="
+Delimiters: specified separator, default is split every char in the string
+
+MaxParts: -1 means all (default), otherwise the str is split the specified number of times,
+          and the remaining substring in the last element is unsplit">
+                <Param name="String" />
+                <Param name="[Delimiters]" />
+                <Param name="[OmitChars]" />
+                <Param name="[MaxParts]" />
+            </Overload>
+        </KeyWord>
+        <Keyword name="StrTitle" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+            </Overload>
+        </Keyword>
+        <KeyWord name="StrUpper" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="String" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SubStr" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+                <Param name="StartingPos" />
+                <Param name="[Length]" />
+            </Overload>
+            <Overload retVal="" descr="
+StartingPos:  1 = starts at beginning
+             -1 = starts at last char
+             -2 = starts second before last char
+              0 = returns empty string (also when starting beyond str len)
+
+Length: Returns specified nuber of chars.  If negative, returns the full string, minus the specified
+        number of chars from the end.">
+                <Param name="String" />
+                <Param name="StartingPos" />
+                <Param name="[Length]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Suspend" func="yes">
+            <Overload retVal="" descr="
+NewState:
+ 1 = Suspends specified hotkeys and hotstrings (default)
+ 0 = Re-enables specified hotkeys and hotstrings
+-1 = Toggles suspend state.">
+                <Param name="[NewState]"/>
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="SuspendExempt" />
+        
+        <KeyWord name="Switch" func="yes">
+            <Overload retVal="" descr="
+Switch [SwitchValue, CaseSense] {
+    Case CaseValue1: Statements...
+    Case CaseValue2: Statements...
+    Default: Statements...
+}"/>
+        </KeyWord>
+        <KeyWord name="SysGet" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Property" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="SysGetIPAddresses" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns array of strings (IPv4 addresses).">
+                <Param name="" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Tan" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Number" />
+            </Overload>
+            <Overload retVal="" descr="
+Number must be in radians.">
+                <Param name="Number" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Thread" func="yes">
+            <Overload retVal="" descr="
+Prevents or resumes interruptions from any timers.">
+                <Param name="&#x22;NoTimers&#x22; [, False]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Level = New thread priority (32-bit signed integer).
+
+See also: Critical, SetProcessPriority">
+                <Param name="&#x22;Priority&#x22;, Level"/>
+            </Overload>
+            <Overload retVal="" descr="
+Changes the duration of interruptibility for newly launched threads. (use caution)">
+                <Param name="&#x22;Interrupt&#x22; [, Duration_ms, LineCount]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Throw" func="yes">
+            <Overload retVal="" descr="
+Throw [ErrorObj]
+
+See Error()."/>
+        </KeyWord>
+        <KeyWord name="ToolTip" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Text]" />
+                <Param name="[X]" />
+                <Param name="[Y]" />
+                <Param name="[WhichTooltip]" />
+            </Overload>
+            <Overload retVal="" descr="
+WhichTooltip:
+Specify a number between 1 and 20.
+
+Call Tooltip() with no params to destroy the tooltip.">
+                <Param name="[Text, X, Y, WhichTooltip]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TraySetIcon" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[FileName]" />
+                <Param name="[IconNum]" />
+                <Param name="[Freeze]" />
+            </Overload>
+            <Overload retVal="" descr="
+Filename can also be HBITMAP:[Handle]">
+                <Param name="[FileName, IconNum, Freeze]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="TrayTip" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Text]" />
+                <Param name="[Title]" />
+                <Param name="[Options]" />
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+   Info Icon: 1
+Warning Icon: 2
+  Error Icon: 3
+   Tray Icon: 4
+    No Sound: 16 (0x10)
+Largest Icon: 32 (0x20)">
+                <Param name="[Text, Title, Options]"/>
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Trim" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="String" />
+                <Param name="[OmitChars]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="Try" func="yes">
+            <Overload retVal="" descr="
+    try {
+        ...
+    } catch [ErrorClass] [as ErrorObj] {
+        ...
+    } else {
+        ...
+    } finally {
+        ...
+    }
+
+-- OR --
+
+    Try (Statement)"/>
+        </KeyWord>
+        <KeyWord name="Type" func="yes"/>
+        
+        <KeyWord name="Until" func="yes">
+            <Overload retVal="" descr="
+Used with Loop, While, and For loops.
+
+    Loop [Count] {
+        ...
+    } Until (expression)
+
+    For i, value in Array {
+        ...
+    } Until (expression)
+
+-- OR --
+
+    While (expression) {
+        ...
+    } Until (expression)"/>
+        </KeyWord>
+        <KeyWord name="UseHook_" />
+        
+        <KeyWord name="VarSetStrCapacity" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="&amp;TargetVar" />
+                <Param name="[RequestedCapacity]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Enlarges a variable's holding capacity or frees its memory.">
+                <Param name="&amp;TargetVar [, RequestedCapacity]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="VerCompare" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="VersionA" />
+                <Param name="VersionB" />
+            </Overload>
+            <Overload retVal="" descr="
+VersionB: can begin with operator symbol: &lt;, &gt;, &lt;=, &gt;=, =
+
+Return: 0 = equal
+        1 = A &gt; B
+       -1 = A &lt; B">
+                <Param name="VersionA" />
+                <Param name="VersionB" />
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="Warn_" />
+        
+        <KeyWord name="While" func="yes">
+            <Overload retVal="" descr="
+    While (expression) {
+        ...
+    }
+
+-- OR --
+
+    While (expression) {
+        ...
+    } Until (expression)"/>
+        </KeyWord>
+        <KeyWord name="WinActivate" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinActivateBottom" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="WinActivateForce_" />
+        
+        <KeyWord name="WinActive" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinClose" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[SecondsToWait]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinExist" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetClass" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetClientPos" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[&amp;X]" />
+                <Param name="[&amp;Y]" />
+                <Param name="[&amp;Width]" />
+                <Param name="[&amp;Height]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetControls" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns array of ClassNN strings.">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetControlsHwnd" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns array of integers (HWNDs).">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetCount" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetExStyle" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetID" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns the HWND of the first matching window.">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetIDLast" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns the unique ID number of the last/bottommost window if there is more than one match.">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetList" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns an array of HWNDs of all existing windows that match the specified criteria..">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetMinMax" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns: -1 = window is minimized
+          1 = window is maximized
+          0 = window is neither">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetPID" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetPos" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[&amp;OutX]" />
+                <Param name="[&amp;OutY]" />
+                <Param name="[&amp;OutWidth]" />
+                <Param name="[&amp;OutHeight]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetProcessName" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetProcessPath" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetStyle" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetText" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetTitle" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetTransColor" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns the color that is marked as transparent.">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinGetTransparent" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Returns the degree of transparency (0 - 255).">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinHide" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinKill" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[SecondsToWait]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinMaximize" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinMinimize" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinMinimizeAll" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinMinimizeAllUndo" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinMove" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[X]" />
+                <Param name="[Y]" />
+                <Param name="[Width]" />
+                <Param name="[Height]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinMoveBottom" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinMoveTop" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinRedraw" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinRestore" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinSetAlwaysOnTop" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[NewSetting]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+NewSetting: 1 = on
+            0 = off
+           -1 = toggle">
+                <Param name="[NewSetting]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinSetEnabled" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="NewSetting" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+NewSetting: 1 = on
+            0 = off
+           -1 = toggle">
+                <Param name="NewSetting" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinSetExStyle" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Value:
+  Add      '+0x80'   NewStyle := CurrentStyle | Value
+  Remove   '-0x80'   NewStyle := CurrentStyle &amp; ~Value
+  Toggle   '^0x80'   NewStyle := CurrentStyle ^ Value">
+                <Param name="Value" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinSetRegion" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[Options]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Options:
+       Wn = width of rectangle or ellipse
+       Hn = height of rectangle or ellipse
+      X-Y = X/Y pairs to define a custom polygon
+        E = makes the region an ellipse Wn and Hn must be specified">
+                <Param name="[Options]" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinSetStyle" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Value" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Value:
+  Add      '+0x80'   NewStyle := CurrentStyle | Value
+  Remove   '-0x80'   NewStyle := CurrentStyle &amp; ~Value
+  Toggle   '^0x80'   NewStyle := CurrentStyle ^ Value">
+                <Param name="Value" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinSetTitle" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="NewTitle" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinSetTransColor" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Color" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Marks all pixels of the specified color as transparent on the specified window.">
+                <Param name="Color" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinSetTransparent" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="N" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+N = Integer (0 - 255)
+
+Sets the degree of transparency on the specified window.">
+                <Param name="N" />
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinShow" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinWait" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[Timeout_sec]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Timeout_sec: Integer or float.  If omitted, waits indefinitely.">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[Timeout_sec]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinWaitActive" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[Timeout_sec]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Timeout_sec: Integer or float.  If omitted, waits indefinitely.">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[Timeout_sec]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinWaitClose" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[Timeout_sec]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Timeout_sec: Integer or float.  If omitted, waits indefinitely.">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[Timeout_sec]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        <KeyWord name="WinWaitNotActive" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[Timeout_sec]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+            <Overload retVal="" descr="
+Timeout_sec: Integer or float.  If omitted, waits indefinitely.">
+                <Param name="[WinTitle]" />
+                <Param name="[WinText]" />
+                <Param name="[Timeout_sec]" />
+                <Param name="[ExcludeTitle]" />
+                <Param name="[ExcludeText]" />
+            </Overload>
+        </KeyWord>
+        
+        <KeyWord name="_ClipboardTimeout" func="yes" />
+        <KeyWord name="_DllLoad" func="yes" />
+        <KeyWord name="_ErrorStdOut" func="yes" />
+        <KeyWord name="_HotIf" func="yes" />
+        <KeyWord name="_HotIfTimeout" func="yes" />
+        <KeyWord name="_Hotstring" func="yes" />
+        <KeyWord name="_Include" func="yes" />
+        <KeyWord name="_IncludeAgain" func="yes" />
+        <KeyWord name="_InputLevel" func="yes" />
+        <KeyWord name="_MaxThreads" func="yes" />
+        <KeyWord name="_MaxThreadsBuffer" func="yes" />
+        <KeyWord name="_MaxThreadsPerHotkey" func="yes" />
+        <KeyWord name="_NoTrayIcon" func="yes" />
+        <KeyWord name="_Requires" func="yes" />
+        <KeyWord name="_SingleInstance" func="yes" />
+        <KeyWord name="_SuspendExempt" func="yes" />
+        <KeyWord name="_UseHook" func="yes" />
+        <KeyWord name="_Warn" func="yes" />
+        <KeyWord name="_WinActivateForce" func="yes" />
+	</AutoComplete>
+</NotepadPlus>
