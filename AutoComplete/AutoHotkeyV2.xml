@@ -1466,7 +1466,21 @@ Drive = X:, X:\, or \\server\share">
                 <Param name="EnvVar [, Value]" />
             </Overload>
         </KeyWord>
-        <KeyWord name="Error" func="yes" />
+        <KeyWord name="Error" func="yes">
+            <Overload retVal="" descr="">
+                <Param name="Message"/>
+                <Param name="[What]"/>
+                <Param name="[Extra]"/>
+            </Overload>
+            <Overload retVal="" descr="
+Properties:  Message, What, Extra, File, Line, Stack
+
+Note: The standard error dialog requires Message, Extra, File and Line to be own value properties.">
+                <Param name="Message"/>
+                <Param name="[What]"/>
+                <Param name="[Extra]"/>
+            </Overload>
+        </KeyWord>
         
         <KeyWord name="ErrorStdOut_" />
         
@@ -3481,7 +3495,7 @@ Speed = between 0 (fastest) and 100.">
             <Overload retVal="" descr="">
                 <Param name="[Delay_ms]" />
                 <Param name="[PressDuration_ms]" />
-                <Param name="[&amp;Play&amp;]" />
+                <Param name="[&#x22;Play&#x22;]" />
             </Overload>
             <Overload retVal="" descr="
 Delay and PressDuration:
@@ -3489,25 +3503,25 @@ Specify -1 for no delay at all, and zero for the smallest possible delay.  If ei
 is omitted, the current value is not changed.
 
 Play:
-If blank, applies to normal SendEvent.  If &amp;Play&amp; is specified, applies to SendPlay.">
+If blank, applies to normal SendEvent.  If &#x22;Play&#x22; is specified, applies to SendPlay.">
                 <Param name="[Delay_ms]" />
                 <Param name="[PressDuration_ms]" />
-                <Param name="[&amp;Play&amp;]" />
+                <Param name="[&#x22;Play&#x22;]" />
             </Overload>
         </KeyWord>
         <KeyWord name="SetMouseDelay" func="yes">
             <Overload retVal="" descr="">
                 <Param name="Delay_ms" />
-                <Param name="[&amp;Play&amp;]" />
+                <Param name="[&#x22;Play&#x22;]" />
             </Overload>
             <Overload retVal="" descr="
 Delay:
 Specify -1 for no delay at all, and zero for the smallest possible delay.
 
 Play:
-If blank, applies to normal SendEvent.  If &amp;Play&amp; is specified, applies to SendPlay.">
+If blank, applies to normal SendEvent.  If &#x22;Play&#x22; is specified, applies to SendPlay.">
                 <Param name="Delay_ms" />
-                <Param name="[&amp;Play&amp;]" />
+                <Param name="[&#x22;Play&#x22;]" />
             </Overload>
         </KeyWord>
         <KeyWord name="SetNumLockState" func="yes">
