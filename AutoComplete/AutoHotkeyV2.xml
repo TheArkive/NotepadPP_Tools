@@ -3244,12 +3244,12 @@ Replacement: Must be a string, can contain $1-$9 for sub-pattern matches.  For v
 
 RegEx short help:
 
-{min,max}
+  {min,max}
          \s = whitespace
     (?=...) = look ahead positive
     (?!...) = look ahead negative
-(?&lt;=...) = look behind positive
-(?&lt;!...) = look behind negative
+   (?&lt;=...) = look behind positive
+   (?&lt;!...) = look behind negative
     \Q...\E = literal text
        *UCP = enables expanded Unicode matching">
                 <Param name="Haystack" />
@@ -4023,8 +4023,8 @@ StartingPos:  1 = starts at beginning
              -2 = starts second before last char
               0 = returns empty string (also when starting beyond str len)
 
-Length: Returns specified nuber of chars.  If negative, returns the full string, minus the specified
-        number of chars from the end.">
+Length: Returns specified nuber of chars.  If negative, returns the string starting from StartPos,
+        minus the specified number of chars from the end.">
                 <Param name="String" />
                 <Param name="StartingPos" />
                 <Param name="[Length]" />
